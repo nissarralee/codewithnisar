@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CSS_Beginners</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <button onclick="toggleDarkMode()">Dark Mode</button>
+      </header>
+      <h1>Introduction to CSS</h1>
+      <p>CSS (Cascading Style Sheets) HTML page ko design aur layout dene ke liye hoti hai.
+      </p>
+      <ul>
+        <li>
+          <strong>Cascading:</strong> Agar ek elment pe multiple styles apply ho to priority ke  rules follow hote hain (inline > internal > external).
+        </li>
+        <li>
+          <strong>Purpose:</strong> <span class="sp">Colors</span>, <span class="sp">spacing</span>, <span class="sp">fonts</span>, <span class="sp">animations</span>, <span class="sp">responsive layouts</span>.
+        </li>
+      </ul>
+      <h2>CSS ko page se Link Karne ke 3 Tareeqe hai.</h2>
+      <h4> 1. External (Recomended):</h4>
+      <pre class="code-block">
+<code>
+<span class="tag">&lt;link</span> <span class="attr">rel</span>=<span class="val">"stylesheet"</span> <span class="attr">href</span>=<span class="val">"style.css"</span><span class="tag">&gt;</span>
+</code>
+</pre>
+
+      <h4>2. Internal <span class="sp">&lt;style&gt;</span> tag <span class="sp">&lt;head&gt;</span></h4>
+      <h4>3. Inline Element ke andar <span class="sp">style="color:red;"</span> (avoid for large projects).</h4>
+      <!-- Week 2 Roadmap -->
+      <!-- Day 8: Slectors, Color, Backgrounds-->
+      <h1>Day: 8 Selectors, Colors, Backgrounds</h1>
+
+      <!-- Selectors -->
+      <h2>1. Selectors</h2>
+      <ul>
+        <li><strong>Use:</strong> Kis element ko stlye dena hai ye decide karte hain.</li>
+        <li><strong>Kahan:</strong> Har CSS rule mein.</li>
+        <li><strong>Types:</strong></li>
+        <ul>
+            
+        <li><strong>Element selector:</strong> <span class="sp">p {color: blue};</span></li>
+        <li><strong>Class selector:</strong> <span class="sp">.title { font-size: 20px }</span> specific group ko style karne ka  liye.</li>
+        <li><strong>ID slector:</strong> <span class="sp">#main { background: yellow; }</span></li>
+        <li><strong>Attribute/Child/Descendant:</strong> Advanced targeting.</li>
+        <li><strong>Use:</strong> Decide kis element ko style karna hai.</li>
+        </ul>
+      </ul>
+      <h2>2. Colors</h2>
+      <ul>
+        <li><strong>Use:</strong> Text, background, borders ka color set karna.</li>
+        <li>Formats:</li>
+        <ul>
+            <li><strong>Name:</strong> <span class="sp">red</span>, <span class="sp">blue</span></li>
+            <li><strong>HEX:</strong><span class="sp">#ff0000</span></li>
+            <li><strong>RGB:</strong><span class="sp">rg(255,0,0)</span></li>
+            <li><strong>RGBA (with opacity):</strong><span class="sp">rgba(0,0,0,0.5)</span></li>
+        </ul>
+      </ul>
+      <h2>3. Backgrounds</h2>
+      <ul>
+        <li><span class="sp">background-color</span>, <span class="sp">background-image</span>, <span class="sp">background-size</span>, <span class="sp">background-position</span>.</li>
+        <li><strong>Use:</strong> Hero sections, banners, textures, background color ya image set karna.</li>
+        <li><strong>Kahan:</strong> Hero section, banners, buttons.</li>
+      </ul>
+      <h3>Example: </h3>
+      <pre class="code-block">
+<code>
+<span class="selector">body</span> {
+  <span class="prop">background-color</span>: <span class="val">#f5f5f5</span>;
+}
+<span class="selector">h1</span> {
+  <span class="prop">color</span>: <span class="val">navy</span>;
+}
+</code>
+</pre>
+
+
+      <!-- Day 9: Links, images, tables -->
+      <h1>Day 9: Box Model (Margins, Padding, Borders)</h1>
+
+      <ul>
+        <li>Har HTML element ek <strong>box</strong> hta hai.</li>
+        <li><strong>Box Model parts:</strong></li>
+        <ul>
+            <li><strong>Content &rarr;</strong> Text ya image.</li>
+            <li><strong>Padding &rarr;</strong> Content aur border ke beech space.</li>
+            <li><strong>Border &rarr;</strong> Element ka border.</li>
+            <li><strong>Margin &rarr;</strong> Element aur doosre elements ke beech space.</li>
+        </ul>
+        <li><strong>Use:</strong> Layout spacing, card designs, button stylling.</li>
+      </ul>
+      <pre class="code-block">
+<code>
+<span class="selector">div</span> {
+  <span class="prop">margin</span>: <span class="val">20px</span>;
+  <span class="prop">padding</span>: <span class="val">15px</span>;
+  <span class="prop">border</span>: <span class="val">2px solid black</span>;
+}
+</code>
+</pre>
+
+      <!-- Day 10: Flexbox -->
+      <h1>Day 10: Flexbox</h1>
+      <p>Flexbox se 1-dimentsioanl (row ya column) layout easily banta hai. Or Layout banane ke liye elements ko row ya colun mein arragne karna.</p>
+      <ul>
+        <li><strong>Container properties: <span class="sp">display:flex</span>, <span class="sp">justify-content</span>, <span class="sp">align-items</span>, <span class="sp">flex-direction</span>.</strong></li>
+        <li><strong>Item propertites:</strong> <span class="sp">flex</span>, <span class="sp">align-self</span></li>
+        <li><strong>Use:</strong> Navbars, card layouts, horizontally/vertically centered content.</li>
+      </ul>
+
+      <h3>Example:</h3>
+      <pre class="code-block">
+<code>
+<span class="selector">.container</span> {
+  <span class="prop">display</span>: <span class="val">flex</span>;
+  <span class="prop">justify-content</span>: <span class="val">space-between</span>;
+  <span class="prop">align-items</span>: <span class="val">center</span>;
+}
+</code>
+</pre>
+
+      <!-- Day 11: CSS Grid -->
+      <h1>Day 11: CSS Grid</h1>
+      <p>Grid se 2-dimentsional layout design hota hai. Or Complex layouts banane ke liye.</p>
+      <ul>
+        <li><span class="sp">display:grid</span>, <span class="sp">grid-template-columns/row</span>, <span class="sp">gap</span>.</li>
+        <li>Combine with media quries for reponsive grids.</li>
+        <li><strong>Use:</strong>Web ka full layout (header, sidebar, main, footer, galleris, dashboards.</li>
+      </ul>
+      <h3>Example:</h3>
+<pre class="code-block">
+<code>
+<span class="selector">.grid</span> {
+  <span class="prop">display</span>: <span class="val">grid</span>;
+  <span class="prop">grid-template-columns</span>: <span class="val">1fr 2fr 1fr</span>;
+  <span class="prop">gap</span>: <span class="val">10px</span>;
+}
+</code>
+</pre>
+
+
+      <!-- Day 12: Transitions & Animations -->
+      <h1>Day 12: Transition & Animations</h1>
+      <ul>
+        <li><strong>Transitions:</strong> Smooth property change (hover effects).</li>
+      </ul>
+      <pre class="code-block">
+<code>
+<span class="selector">button</span> {
+  <span class="prop">background</span>: <span class="val">blue</span>;
+  <span class="prop">transition</span>: <span class="val">background 0.3s</span>;
+}
+
+<span class="selector">button</span><span class="pseudo">:hover</span> {
+  <span class="prop">background</span>: <span class="val">red</span>;
+}
+</code>
+</pre>
+
+<ul>
+    <li><strong>Animations:</strong> Keyframes definem movement or style changes.</li>
+</ul>
+<pre class="code-block">
+<code>
+<span class="selector">@keyframes</span> fade {
+  <span class="keyword">from</span> { <span class="prop">opacity</span>: <span class="val">0</span>; }
+  <span class="keyword">to</span> { <span class="prop">opacity</span>: <span class="val">1</span>; }
+}
+</code>
+</pre>
+<ul>
+    <li><strong>Use:</strong>Hover effects, loaders, banners.</li>
+</ul>
+      
+      <!-- Day 13: Responsive Design (Media Queries) -->
+      <h1>Day 13: Responsive Design (Media Queries)</h1>
+      <p>Responsive design = har screen size pe acha layout.</p>
+      <ul>
+        <li>Different Screen sizes ke liye layout adjust karna.</li>
+        <li>Uses: Mobile-friendly sites, tablets, different devices.</li>
+        <li><strong>Kahan:</strong> Mobile, tablet, desktop layouts.</li>
+      </ul>
+      <h3>Example:</h3>
+      <pre class="code-block">
+<code>
+<span class="keyword">@media</span> (<span class="prop">max-width</span>: <span class="val">768px</span>) {
+  <span class="selector">body</span> {
+    <span class="prop">font-size</span>: <span class="val">14px</span>;
+    <span class="prop">background</span>: <span class="val">lightblue</span>;
+  }
+}
+</code>
+</pre>
+
+<!-- Day 14: Project: Responsive Landing Page -->
+ <h1>Day 14: Project Responsive Landing Page</h1>
+      <ul>
+        <li><strong>Goal:</strong> Ek Professsional landing page jo moible, tablet, desktop pe adjust ho.</li>
+        <li><strong>Features:</strong></li>
+        <ul>
+            <li>Flexbox/Grid for sections.</li>
+            <li>Media quries for breakpoints.</li>
+            <li>Transitions/animation for buttons & hero section.</li>
+            <li>External CSS file for clean structure.</li>
+        </ul>
+      </ul>
+      <a href="/assets/CSS/Projects/index.html" target="_blank">See Project</a>
+      <h3>Is Project me kya kya cover hua:</h3>
+      <ul>
+        <li>Day 8 - Selector & Text Styling</li>
+        <li>Day 9 - Box Model & Layout Basics</li>
+        <li>Day 10 & 11 - Flexbox & Grid</li>
+        <li>Day 12 - Transition & Animation</li>
+        <li>Day 13 - Effect & Responsive Design</li>
+      </ul>
+    </div>
+    <script>
+      function toggleDarkMode() {
+  document.body.classList.toggle("dark-mode");
+}
+
+    </script>
+  </body>
+</html>

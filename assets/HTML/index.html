@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HTML_Beginners</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <button onclick="toggleDarkMode()">Dark Mode</button>
+      </header>
+      <h1>Introduction to HTML</h1>
+      <p>
+        HTML (Hyper Text Markup Language) is the standard language for creating
+        web pages.
+      </p>
+      <ul>
+        <li>
+          <strong>Hyper Text:</strong> Text that contains links to other pages
+          or resources.
+        </li>
+        <li>
+          <strong>Markup:</strong> Special tags <span>(< >)</span> that describe
+          the structure and meaning of content.
+        </li>
+      </ul>
+      <h3>A Simple HTML Page:</h3>
+      <h2>Highlighted HTML Code</h2>
+      <pre>
+        <code>
+          <span class="tag">&lt;!DOCTYPE html&gt;</span>
+          <span class="tag">&lt;html&gt;</span>
+            <span class="tag">&lt;head&gt;</span>
+              <span class="tag">&lt;title&gt;</span><span class="text">My First Page</span><span class="tag">&lt;/title&gt;</span>
+            <span class="tag">&lt;/head&gt;</span>
+            <span class="tag">&lt;body&gt;</span>
+              <span class="tag">&lt;h1&gt;</span><span class="text">Hello, World!</span><span class="tag">&lt;/h1&gt;</span>
+              <span class="tag">&lt;p&gt;</span><span class="text">This is my first HTML page.</span><span class="tag">&lt;/p&gt;</span>
+            <span class="tag">&lt;/body&gt;</span>
+          <span class="tag">&lt;/html&gt;</span>
+    </code>
+  </pre>
+      <h3>Why HTML?</h3>
+      <ul>
+        <li>
+          Define structure for all web content (text, images, videos, forms).
+        </li>
+        <li>Works in every browser.</li>
+        <li>
+          Forms the foundation before adding CSS (styling) or JavaScript
+          (interactivity).
+        </li>
+      </ul>
+
+      <!-- Week 1 Roadmap -->
+      <!-- Day 1: Basic Structure, Headings, Paragraphs, Lists-->
+      <h1>Day: 1 Basic Structure, Headings, Paragraphs, Lists</h1>
+
+      <!-- Structure -->
+      <h2>1. Structure Tags</h2>
+      <ul>
+        <li>
+          <span>&lt;html&gt;, &lt;head&gt;, &lt;body&gt;</span>: Skeleton of
+          every page.
+        </li>
+        <li>Use: Always - every HTML document starts with these.</li>
+      </ul>
+      <h3>Document Structure</h3>
+      <ul>
+        <li>
+          <span>&lt;DOCTYPE html&gt;:</span> Browser ko HTML5 version batane ke
+          liye.
+        </li>
+        <li><span>&lt;html&gt;:</span> Root container.</li>
+        <li>
+          <span>&lt;head&gt;:</span> Meta info - title, SEO, CSS/JS links.
+        </li>
+        <li><span>&lt;body&gt;:</span> Screen pe jo dikhega.</li>
+        <li>Use: Har HTML page me shuruat me.</li>
+      </ul>
+
+      <!-- Heading -->
+      <h2>2. Heading &lt;h1&gt;-&lt;h6&gt;</h2>
+      <ul>
+        <li>
+          Use: Title & sub-titles; &lt;h1&gt; for the main heading, &lt;h2&gt;
+          for sections, etc.
+        </li>
+      </ul>
+      <h3>Headings <span> &lt;h1&gt;</span> - <span>&lt;h6&gt;</span></h3>
+      <ul>
+        <li><span>h1</span> sabse bada, <span>h6</span> sabse chhota.</li>
+        <li><strong>Kab use Karain:</strong></li>
+      </ul>
+      <ul>
+        <li><span>h1</span>: Page ka main title.</li>
+        <li><span>h2</span>: Section headings (About, Contact).</li>
+        <li>Niche ke headings subsections ke liye.</li>
+      </ul>
+
+      <!-- Paragraph -->
+      <h2>3. Paragrpah &lt;p&gt;</h2>
+      <ul>
+        <li>Text blocks likhne ke liye.</li>
+        <li>
+          Use: regurlar text blocks, articles, blog content, descriptions.
+        </li>
+      </ul>
+
+      <!-- List -->
+      <h2>4. Lists</h2>
+      <ul>
+        <li>
+          Unordered <span>&lt;ul&gt;:</span> Bullet list (featrues, points).
+        </li>
+        <li>
+          Ordered <span>&lt;ol&gt;:</span> Numbered list (steps, rankings).
+        </li>
+        <li>List Item <span>&lt;li&gt; Har item ke liye.</span></li>
+        <li>Use: Navigation menus, steps features list, etc.</li>
+      </ul>
+
+      <!-- Day 2: Links, images, tables -->
+      <h1>Day 2: Links, Images, Tables</h1>
+      <h2>1. Links &lt;a&gt;</h2>
+      <ul>
+        <li>Syntax <span>&lt;a href="page.html">Click/a&gt;</span></li>
+        <li>
+          Attributes:
+          <span>&lt;target="_blank"&gt; nayi tab me kholne ke liye.</span>
+        </li>
+        <li><span>href</span> attribute sets destination.</li>
+        <li>
+          Use: Navigation menu, download links, external resources, same-page
+          anchor, internal page jumps.
+        </li>
+      </ul>
+
+      <h2>2. Images &lt;img&gt;</h2>
+      <ul>
+        <li>
+          Synta: <span>&lt;img src="image.jpg" alt="Description"&gt;</span>
+        </li>
+        <li>alt SEO + accessibility ke liye</li>
+        <li><span>src</span>for path, <span>alt</span> for description.</li>
+        <li>Use: Logos, illustrations, product picutres, banners.</li>
+      </ul>
+
+      <h2>3. Tables &lt;table&gt; with &lt;tr&gt;, &lt;td&gt;, &lt;th&gt;</h2>
+      <ul>
+        <li>Use: Display tabular data (pricing, schedules, comparision).</li>
+        <li>Structure:</li>
+      </ul>
+      <pre>
+<code>
+<span class="tag">&lt;table</span> <span class="attr">border</span>=<span class="val">"1"</span> <span class="attr">cellpadding</span>=<span class="val">"8"</span><span class="tag">&gt;</span>
+  <span class="tag">&lt;tr&gt;</span>
+    <span class="tag">&lt;th&gt;</span>Heading<span class="tag">&lt;/th&gt;</span>
+    <span class="tag">&lt;th&gt;</span>Heading<span class="tag">&lt;/th&gt;</span>
+  <span class="tag">&lt;/tr&gt;</span>
+  <span class="tag">&lt;tr&gt;</span>
+    <span class="tag">&lt;td&gt;</span>Data<span class="tag">&lt;/td&gt;</span>
+    <span class="tag">&lt;td&gt;</span>Data<span class="tag">&lt;/td&gt;</span>
+  <span class="tag">&lt;/tr&gt;</span>
+<span class="tag">&lt;/table&gt;</span>
+</code>
+</pre>
+
+      <ul>
+        <li>Use: Timetables, price charts, comparison data.</li>
+      </ul>
+
+      <!-- Day 3: Forms -->
+      <h1>Day 3: Forms</h1>
+      <p>Collect User Input.</p>
+      <ul>
+        <li><span>&lt;formt&gt;:</span> Poora form container.</li>
+        <li>
+          <span>&lt;input&gt;:</span> Text, email, password, checkbox, radio.
+        </li>
+        <li><span>&lt;textarea&gt;:</span> Multi-line text</li>
+        <li><span>&lt;label&gt;:</span>Input ke naam ka tag.</li>
+        <li>
+          <span>&lt;buttion&gt;</span> /
+          <span>&lt;input type="submit"&gt;:</span> Form bhejne ke liye.
+        </li>
+        <li>Use Examples:</li>
+        <li>Contact forms, sign-up/login, feedback surveys.</li>
+      </ul>
+
+      <!-- Day 4: Sementaic Tags -->
+      <h1>Day 4: Semantic Tags</h1>
+      <p>
+        Describe meaning, not just layout. Improves SEO & accessibility. OR
+        Semantic tags browser aur SEO ko content ka maqsad batate hain.
+      </p>
+      <ul>
+        <li><span>&lt;header&gt;:</span> Top section (logo, nav)</li>
+        <li><span>&lt;nav&gt;:</span> Main menu/links.</li>
+        <li><span>&lt;section&gt;:</span> Thematic grouping of content.</li>
+        <li><span>&lt;article&gt;:</span> Independent content (blog post).</li>
+        <li>
+          <span>&lt;footer&gt;:</span> Bottom info(copyright, social links).
+        </li>
+        <li>
+          Use: Any modern, well-structure page. OR Modern, SEO-friendly layout
+          banate waqt.
+        </li>
+      </ul>
+      <pre>
+<code>
+<span class="pipe">|</span> <span class="header">Tag</span>         <span class="pipe">|</span> <span class="header">Purpose</span>                   <span class="pipe">|</span> <span class="header">Use Example</span>                     <span class="pipe">|</span>
+<span class="pipe">|</span> ----------- <span class="pipe">|</span> ------------------------- <span class="pipe">|</span> ------------------------------- <span class="pipe">|</span>
+<span class="pipe">|</span> <span class="tag">&lt;header&gt;</span>  <span class="pipe">|</span> Page/section ka top area  <span class="pipe">|</span> Logo, navigation menu           <span class="pipe">|</span>
+<span class="pipe">|</span> <span class="tag">&lt;nav&gt;</span>     <span class="pipe">|</span> Links ka group            <span class="pipe">|</span> Main site menu                  <span class="pipe">|</span>
+<span class="pipe">|</span> <span class="tag">&lt;section&gt;</span> <span class="pipe">|</span> Theme-wise content        <span class="pipe">|</span> Services section, About section <span class="pipe">|</span>
+<span class="pipe">|</span> <span class="tag">&lt;article&gt;</span> <span class="pipe">|</span> Independent content block <span class="pipe">|</span> Blog post, news article         <span class="pipe">|</span>
+<span class="pipe">|</span> <span class="tag">&lt;footer&gt;</span>  <span class="pipe">|</span> Page ka bottom            <span class="pipe">|</span> Copyright, contact links        <span class="pipe">|</span>
+</code>
+</pre>
+
+      <!-- Day 5: Practice: Mini Portfolio Page -->
+      <h1>Day 5: Practice Mini Portfolio Page</h1>
+      <ul>
+        <li>Combine headings, paragraphs, lists, links images.</li>
+        <li>Example sections: About Me, Skills(list), Project(links).</li>
+      </ul>
+      <h4>OR</h4>
+      <p>
+        Apna naam, short intro, skills, list, projects ke links aur ek image
+        (profile picture) add karke cchhoti portfolio page banao.
+      </p>
+      <ul>
+        <li>headings + Paragraphs: Introduction</li>
+        <li>Lists: Skills</li>
+        <li>Links: projects</li>
+        <li>Image: Profile photo</li>
+      </ul>
+
+      <!-- Day 6 Project Simple Resume Webpage -->
+      <h1>Day 6: Project Simple Resume Webpage</h1>
+      <ul>
+        <li>Structure: header(name), sections (Education, Skills, Contact).</li>
+        <li>Use forms if you like a contact form.</li>
+      </ul>
+      <h4>OR</h4>
+      <ul>
+        <li><strong>Header:</strong> Name + job title.</li>
+        <li><strong>Section:</strong> Edcation, Skills, Experience.</li>
+        <li>
+          <strong>Optional:</strong> Contact form with <span>&lt;form&gt;</span>
+        </li>
+        <li>Use semantic tags for neat structure.</li>
+      </ul>
+
+      <!-- Day 7 Revision + Quiz -->
+      <h1>Day 7: Revision + Quiz</h1>
+      <ul>
+        <li>Re-type small pages without lookin at notes.</li>
+      </ul>
+      <ul>
+        <li><strong>Quiz ideas:</strong></li>
+        <li>Identify correct tags, fix broken HTML, explain semantic tags.</li>
+        <li>Correct vs Wrong tag identify.</li>
+        <li>Semantic vs non-semantic tag difference.</li>
+        <li>Form create karne ka syntax.</li>
+      </ul>
+      <h2>Mini Projects Links:</h2>
+      <div class="project">
+      <a href="/assets/HTML/Project/fastproject.html" target="_blank">See Project: 1 </a>
+      <a href="/assets/HTML/Project/secproject.html" target="_blank">See Project: 2</a>
+      <a href="/assets/HTML/Project/thridproject.html" target="_blank">See Project: 3</a>
+      <a href="/assets/HTML/Project/fourproject.html" target="_blank">See Project: 4</a>
+      <a href="/assets/HTML/Project/fourproject.html" target="_blank">See Project: 5</a>
+      <a href="/assets/HTML/Project/fiveproject.html" target="_blank">See Project: 6</a>
+      <a href="/assets/HTML/Project/sixproject.html" target="_blank">See Project: 7</a>
+      </div>
+      
+      <h3>Is Project me kya kya cover hua:</h3>
+      <ul>
+        <li>Day 1 - Headings, Paragraphs, List</li>
+        <li>Day 2 - Links, Images, Table</li>
+        <li>Day 3 - Forms (input, textarea, checkbox, radio)</li>
+        <li>Day 4 - Semantic Tags (header, nav, section, footer)</li>
+        <li>Day 5 - Practice (Mini Portfolio)</li>
+      </ul>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>

@@ -1,0 +1,236 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+/* CSS Reset and Base Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  line-height: 1.6;
+  padding: 20px;
+  line-height: 1.6;
+  color: #333;
+  background-color: #f9f9f9;
+  transition: all 0.3s ease;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  padding: 30px;
+  transition: all 0.3s ease;
+}
+
+/* Header and Dark Mode Toggle */
+header {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 30px;
+}
+
+button {
+  background-color: #4a6fa5;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: #3a5a80;
+}
+
+/* Typography */
+h1 {
+  color: #2c3e50;
+  margin: 25px 0 15px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #eaeaea;
+}
+
+h2 {
+  color: #3498db;
+  margin: 20px 0 10px;
+}
+
+h3 {
+  color: #2980b9;
+  margin: 15px 0 10px;
+}
+
+h4 {
+  color: #555;
+  margin: 10px 0;
+  font-style: italic;
+}
+
+p {
+  margin-bottom: 15px;
+}
+
+/* Lists */
+ul {
+  margin-left: 20px;
+  margin-bottom: 20px;
+}
+
+li {
+  margin-bottom: 8px;
+}
+
+strong {
+  color: #e74c3c;
+}
+
+span {
+  color: #8e44ad;
+  font-family: monospace;
+}
+
+.project a{
+  margin: 10px 0;
+  display: block;
+}
+
+/* Code Blocks */
+pre {
+  background-color: #2d2d2d;
+  color: #f8f8f2;
+  padding: 15px;
+  border-radius: 5px;
+  overflow-x: auto;
+  margin: 15px 0;
+  font-family: "Courier New", monospace;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.tag {
+  color: #f92672; /* Pink for tags */
+}
+
+.attr {
+  color: #a6e22e; /* Green for attributes */
+}
+
+.val {
+  color: #e6db74; /* Yellow for values */
+}
+
+.text {
+  color: #f8f8f2; /* White for text content */
+}
+
+.pipe {
+  color: #66d9ef; /* Light blue for table pipes */
+}
+
+.header {
+  color: #ae81ff; /* Purple for table headers */
+  font-weight: bold;
+}
+
+/* Links */
+a {
+  color: #3498db;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Tables */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 15px 0;
+}
+
+th,
+td {
+  padding: 10px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+th {
+  background-color: #f2f2f2;
+}
+
+/* Dark Mode Styles */
+body.dark-mode {
+  background-color: #1a1a1a;
+  color: #e0e0e0;
+}
+
+body.dark-mode .container {
+  background-color: #2d2d2d;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+}
+
+body.dark-mode h1 {
+  color: #ecf0f1;
+  border-bottom-color: #444;
+}
+
+body.dark-mode h2 {
+  color: #3498db;
+}
+
+body.dark-mode h3 {
+  color: #5dade2;
+}
+
+body.dark-mode h4 {
+  color: #bdc3c7;
+}
+
+body.dark-mode span {
+  color: #bb8fce;
+}
+
+body.dark-mode pre {
+  background-color: #0d0d0d;
+}
+
+body.dark-mode button {
+  background-color: #34495e;
+}
+
+body.dark-mode button:hover {
+  background-color: #2c3e50;
+}
+
+body.dark-mode th {
+  background-color: #2c3e50;
+  color: #ecf0f1;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .container {
+    padding: 10px;
+  }
+
+  h1 {
+    font-size: 1.8rem;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+  }
+
+  pre {
+    font-size: 12px;
+    padding: 10px;
+  }
+}

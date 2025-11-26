@@ -1,0 +1,842 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JavaScript Beginners Tutorial</title>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+      /* CSS Reset and Base Styles */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Poppins", sans-serif;
+        line-height: 1.6;
+        color: #333;
+        background-color: #f9f9f9;
+        transition: all 0.3s ease;
+        padding: 20px;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        background: white;
+        border-radius: 10px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        padding: 30px;
+        transition: all 0.3s ease;
+      }
+
+      /* Header and Dark Mode Toggle */
+      header {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        margin-bottom: 30px;
+        padding-bottom: 15px;
+      }
+
+      .logo {
+        font-size: 24px;
+        font-weight: bold;
+        color: #3498db;
+      }
+
+      button {
+        background-color: #4a6fa5;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 16px;
+        transition: background-color 0.3s;
+      }
+
+      button:hover {
+        background-color: #3a5a80;
+      }
+
+      /* Typography */
+      h1 {
+        color: #2c3e50;
+        margin: 25px 0 15px;
+        padding-bottom: 10px;
+        border-bottom: 2px solid #eaeaea;
+      }
+
+      h2 {
+        color: #3498db;
+        margin: 20px 0 10px;
+      }
+
+      h3 {
+        color: #2980b9;
+        margin: 15px 0 10px;
+      }
+
+      h4 {
+        color: #555;
+        margin: 10px 0;
+        font-style: italic;
+      }
+
+      p {
+        margin-bottom: 15px;
+      }
+
+      /* Lists */
+      ul,
+      ol {
+        margin-left: 20px;
+        margin-bottom: 20px;
+      }
+
+      li {
+        margin-bottom: 8px;
+      }
+
+      strong {
+        color: #e74c3c;
+      }
+
+      span.code {
+        color: #8e44ad;
+        font-family: monospace;
+        background-color: #f5f5f5;
+        padding: 2px 5px;
+        border-radius: 3px;
+      }
+
+      /* Code Blocks */
+      pre {
+        background-color: #2d2d2d;
+        color: #f8f8f2;
+        padding: 15px;
+        border-radius: 5px;
+        overflow-x: auto;
+        margin: 15px 0;
+        font-family: "Courier New", monospace;
+        font-size: 14px;
+        line-height: 1.4;
+      }
+
+      .tag {
+        color: #f92672; /* Pink for tags */
+      }
+
+      .attr {
+        color: #a6e22e; /* Green for attributes */
+      }
+
+      .val {
+        color: #e6db74; /* Yellow for values */
+      }
+
+      .text {
+        color: #f8f8f2; /* White for text content */
+      }
+
+      .comment {
+        color: #75715e; /* Gray for comments */
+      }
+
+      .keyword {
+        color: #66d9ef; /* Light blue for keywords */
+      }
+
+      .string {
+        color: #e6db74; /* Yellow for strings */
+      }
+
+      .function {
+        color: #a6e22e; /* Green for functions */
+      }
+
+      /* Interactive Examples */
+      .example-box {
+        background-color: #f8f9fa;
+        border-left: 4px solid #3498db;
+        padding: 15px;
+        margin: 15px 0;
+        border-radius: 0 5px 5px 0;
+      }
+
+      .demo-button {
+        background-color: #2ecc71;
+        margin: 10px 0;
+      }
+
+      .demo-button:hover {
+        background-color: #27ae60;
+      }
+
+      .output {
+        background-color: #ecf0f1;
+        padding: 10px;
+        border-radius: 5px;
+        margin-top: 10px;
+        font-family: monospace;
+        min-height: 20px;
+      }
+
+      /* Todo List Styles */
+      .todo-container {
+        background-color: #f8f9fa;
+        border-radius: 8px;
+        padding: 20px;
+        margin: 20px 0;
+        border: 1px solid #e0e0e0;
+      }
+
+      .todo-input {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 10px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        font-size: 16px;
+      }
+
+      .todo-list {
+        list-style-type: none;
+        margin: 15px 0;
+      }
+
+      .todo-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px;
+        background: white;
+        margin-bottom: 8px;
+        border-radius: 4px;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+      }
+
+      .todo-item.completed {
+        text-decoration: line-through;
+        opacity: 0.7;
+      }
+
+      .todo-actions button {
+        margin-left: 5px;
+        padding: 5px 10px;
+        font-size: 12px;
+      }
+
+      .delete-btn {
+        background-color: #e74c3c;
+      }
+
+      .delete-btn:hover {
+        background-color: #c0392b;
+      }
+
+      /* Dark Mode Styles */
+      body.dark-mode {
+        background-color: #1a1a1a;
+        color: #e0e0e0;
+      }
+
+      body.dark-mode .container {
+        background-color: #2d2d2d;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+      }
+
+      body.dark-mode h1 {
+        color: #ecf0f1;
+        border-bottom-color: #444;
+      }
+
+      body.dark-mode h2 {
+        color: #3498db;
+      }
+
+      body.dark-mode h3 {
+        color: #5dade2;
+      }
+
+      body.dark-mode h4 {
+        color: #bdc3c7;
+      }
+
+      body.dark-mode span.code {
+        color: #bb8fce;
+        background-color: #3d3d3d;
+      }
+
+      body.dark-mode pre {
+        background-color: #0d0d0d;
+      }
+
+      body.dark-mode button {
+        background-color: #34495e;
+      }
+
+      body.dark-mode button:hover {
+        background-color: #2c3e50;
+      }
+
+      body.dark-mode .example-box {
+        background-color: #2c3e50;
+        border-left-color: #3498db;
+      }
+
+      body.dark-mode .output {
+        background-color: #34495e;
+        color: #ecf0f1;
+      }
+
+      body.dark-mode .todo-container {
+        background-color: #2c3e50;
+        border-color: #34495e;
+      }
+
+      body.dark-mode .todo-input {
+        background-color: #34495e;
+        border-color: #4a6fa5;
+        color: #ecf0f1;
+      }
+
+      body.dark-mode .todo-item {
+        background-color: #34495e;
+      }
+
+      /* Responsive Design */
+      @media (max-width: 768px) {
+        .container {
+          padding: 15px;
+        }
+
+        h1 {
+          font-size: 1.8rem;
+        }
+
+        h2 {
+          font-size: 1.5rem;
+        }
+
+        pre {
+          font-size: 12px;
+          padding: 10px;
+        }
+
+        header {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+
+        .logo {
+          margin-bottom: 10px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <button onclick="toggleDarkMode()">Dark Mode</button>
+      </header>
+
+      <h1>JavaScript Introduction</h1>
+      <p>
+        <strong>JavaScript (JS)</strong> ek programming language hai jo web
+        pages ko <strong>interactive</strong> banati hai.
+      </p>
+
+      <ul>
+        <li>HTML ➜ Structure</li>
+        <li>CSS ➜ Styling</li>
+        <li><strong>JavaScript ➜ Logic + Interactivity</strong></li>
+      </ul>
+
+      <h3>Example:</h3>
+      <pre><code><span class="tag">&lt;button</span> <span class="attr">onclick=</span><span class="val">"alert('Hello!')"</span><span class="tag">&gt;</span><span class="text">Click me</span><span class="tag">&lt;/button&gt;</span></code></pre>
+
+      <div class="example-box">
+        <p>Try this interactive example:</p>
+        <button
+          class="demo-button"
+          onclick="alert('Hello! This is JavaScript!')"
+        >
+          Click me
+        </button>
+        <p>Browser me click karte hi alert box aayega—ye power JS deta hai.</p>
+      </div>
+
+      <!-- <h1>Week 3 Detailed Roadmap</h1> -->
+
+      <h1>Day 15 → Variables, Data Types, Operators</h1>
+
+      <h3>1. Variables – Data store karne ke containers.</h3>
+      <ul>
+        <li>
+          <span class="code">var</span> (old),
+          <span class="code">let</span> (block scoped),
+          <span class="code">const</span> (fixed value).
+        </li>
+        <li>Use: User name, scores, counters.</li>
+      </ul>
+
+      <h3>2. Data Types</h3>
+      <ul>
+        <li>
+          Primitive: String, Number, Boolean, Null, Undefined, Symbol, BigInt.
+        </li>
+        <li>Non-primitive: Object, Array.</li>
+        <li>Use: Har tarah ka data hold karne ke liye.</li>
+      </ul>
+
+      <h3>3. Operators</h3>
+      <ul>
+        <li>Arithmetic: <span class="code">+ - * / %</span></li>
+        <li>
+          Comparison: <span class="code">==</span>,
+          <span class="code">===</span>, <span class="code">></span>,
+          <span class="code"><</span>
+        </li>
+        <li>
+          Logical: <span class="code">&&</span>, <span class="code">||</span>,
+          <span class="code">!</span>
+        </li>
+        <li>Use: Calculations, condition checking.</li>
+      </ul>
+
+      <div class="example-box">
+        <h4>Variables Example:</h4>
+        <pre><code><span class="keyword">let</span> <span class="attr">userName</span> = <span class="string">"Ali"</span>;
+<span class="keyword">const</span> <span class="attr">birthYear</span> = <span class="val">2000</span>;
+<span class="keyword">var</span> <span class="attr">score</span> = <span class="val">95</span>;
+
+<span class="comment">// Display in console</span>
+console.<span class="function">log</span>(userName);</code></pre>
+        <button class="demo-button" onclick="runVariableExample()">
+          Run Example
+        </button>
+        <div class="output" id="variable-output"></div>
+      </div>
+
+      <h1>Day 16 → Functions, Conditions, Loops</h1>
+
+      <h3>1. Functions – Reusable code blocks.</h3>
+      <pre><code><span class="keyword">function</span> <span class="function">greet</span>(name) { 
+    <span class="keyword">return</span> <span class="string">"Hello "</span> + name; 
+}</code></pre>
+      <ul>
+        <li>Use: Repeated tasks (calculations, DOM updates).</li>
+      </ul>
+
+      <h3>2. Conditions – Decision making.</h3>
+      <ul>
+        <li>
+          <span class="code">if</span>, <span class="code">else if</span>,
+          <span class="code">else</span>, <span class="code">switch</span>.
+        </li>
+        <li>Use: Login checks, feature toggles.</li>
+      </ul>
+
+      <h3>3. Loops – Repeat actions.</h3>
+      <ul>
+        <li>
+          <span class="code">for</span>, <span class="code">while</span>,
+          <span class="code">do…while</span>, <span class="code">for…of</span>,
+          <span class="code">for…in</span>.
+        </li>
+        <li>Use: Iterating arrays, repeated DOM updates.</li>
+      </ul>
+
+      <div class="example-box">
+        <h4>Function & Condition Example:</h4>
+        <pre><code><span class="keyword">function</span> <span class="function">checkAge</span>(age) {
+    <span class="keyword">if</span> (age >= <span class="val">18</span>) {
+        <span class="keyword">return</span> <span class="string">"Adult"</span>;
+    } <span class="keyword">else</span> {
+        <span class="keyword">return</span> <span class="string">"Minor"</span>;
+    }
+}
+
+<span class="comment">// Test the function</span>
+<span class="keyword">let</span> <span class="attr">result</span> = <span class="function">checkAge</span>(<span class="val">20</span>);</code></pre>
+        <button class="demo-button" onclick="runFunctionExample()">
+          Run Example
+        </button>
+        <div class="output" id="function-output"></div>
+      </div>
+
+      <h1>Day 17 → Arrays & Objects</h1>
+
+      <h3>1. Arrays – Ordered lists of data.</h3>
+      <ul>
+        <li>
+          Methods: <span class="code">push</span>,
+          <span class="code">pop</span>, <span class="code">map</span>,
+          <span class="code">filter</span>.
+        </li>
+        <li>Use: Store items (tasks, product lists).</li>
+      </ul>
+
+      <h3>2. Objects – Key–value pairs.</h3>
+      <pre><code><span class="keyword">const</span> <span class="attr">user</span> = {
+    <span class="attr">name:</span> <span class="string">"Ali"</span>,
+    <span class="attr">age:</span> <span class="val">20</span>,
+    <span class="attr">city:</span> <span class="string">"Mumbai"</span>
+};</code></pre>
+      <ul>
+        <li>Use: Represent entities like users, products.</li>
+      </ul>
+
+      <div class="example-box">
+        <h4>Array & Object Example:</h4>
+        <pre><code><span class="comment">// Array example</span>
+<span class="keyword">let</span> <span class="attr">fruits</span> = [<span class="string">"Apple"</span>, <span class="string">"Banana"</span>, <span class="string">"Orange"</span>];
+fruits.<span class="function">push</span>(<span class="string">"Mango"</span>);
+
+<span class="comment">// Object example</span>
+<span class="keyword">let</span> <span class="attr">person</span> = {
+    <span class="attr">firstName:</span> <span class="string">"John"</span>,
+    <span class="attr">lastName:</span> <span class="string">"Doe"</span>,
+    <span class="attr">age:</span> <span class="val">30</span>
+};</code></pre>
+        <button class="demo-button" onclick="runArrayObjectExample()">
+          Run Example
+        </button>
+        <div class="output" id="array-object-output"></div>
+      </div>
+
+      <h1>Day 18 → DOM Manipulation</h1>
+      <p>
+        The <strong>DOM (Document Object Model)</strong> lets JS interact with
+        HTML.
+      </p>
+
+      <h3>Selectors</h3>
+      <ul>
+        <li><span class="code">document.getElementById('id')</span></li>
+        <li><span class="code">document.querySelector('.class')</span></li>
+      </ul>
+
+      <h3>Change Content/Style</h3>
+      <pre><code>element.<span class="attr">textContent</span> = <span class="string">"New text"</span>;
+element.<span class="attr">style</span>.<span class="attr">color</span> = <span class="string">"red"</span>;</code></pre>
+
+      <h3>Events</h3>
+      <ul>
+        <li><span class="code">addEventListener('click', handler)</span></li>
+        <li>Use: Button clicks, form submissions, mouse moves.</li>
+      </ul>
+
+      <div class="example-box">
+        <h4>DOM Manipulation Example:</h4>
+        <p id="dom-example">This text will change when you click the button.</p>
+        <button class="demo-button" onclick="changeText()">Change Text</button>
+        <button class="demo-button" onclick="changeColor()">
+          Change Color
+        </button>
+      </div>
+
+      <h1>Day 19 → Forms Handling & localStorage</h1>
+
+      <h3>1. Forms Handling</h3>
+      <ul>
+        <li>
+          Access values:
+          <span class="code">document.forms["myForm"]["username"].value</span>
+        </li>
+        <li>Validate input: Empty fields, email format.</li>
+      </ul>
+
+      <h3>2. localStorage</h3>
+      <ul>
+        <li>Save key/value pairs in browser.</li>
+        <li><span class="code">localStorage.setItem("key","value")</span></li>
+        <li>
+          Persist data even after page refresh (useful for dark mode, cart
+          items).
+        </li>
+      </ul>
+
+      <div class="example-box">
+        <h4>localStorage Example:</h4>
+        <input
+          type="text"
+          id="storage-input"
+          placeholder="Enter text to save"
+        />
+        <button class="demo-button" onclick="saveToLocalStorage()">
+          Save to localStorage
+        </button>
+        <button class="demo-button" onclick="loadFromLocalStorage()">
+          Load from localStorage
+        </button>
+        <div class="output" id="storage-output"></div>
+      </div>
+
+      <h1>Day 20 → ES6+ Features</h1>
+      <p>Modern JS updates:</p>
+      <ul>
+        <li>
+          <span class="code">let</span> & <span class="code">const</span> –
+          Better variable scoping.
+        </li>
+        <li>
+          Arrow Functions <span class="code">() => {}</span> – Short syntax.
+        </li>
+        <li>
+          Template Strings <span class="code">`Hello ${name}`</span> – Easy
+          string + variables.
+        </li>
+        <li>Destructuring, Spread/Rest operators – Cleaner code.</li>
+        <li>Use: Almost all modern JS projects.</li>
+      </ul>
+
+      <div class="example-box">
+        <h4>ES6+ Features Example:</h4>
+        <pre><code><span class="comment">// Arrow function</span>
+<span class="keyword">const</span> <span class="function">multiply</span> = (a, b) => a * b;
+
+<span class="comment">// Template string</span>
+<span class="keyword">let</span> <span class="attr">name</span> = <span class="string">"Alice"</span>;
+<span class="keyword">let</span> <span class="attr">message</span> = <span class="string">`Hello, </span>${name}<span class="string">! Welcome to JavaScript.`</span>;
+
+<span class="comment">// Destructuring</span>
+<span class="keyword">let</span> <span class="attr">user</span> = { <span class="attr">firstName:</span> <span class="string">"John"</span>, <span class="attr">lastName:</span> <span class="string">"Doe"</span> };
+<span class="keyword">let</span> { firstName, lastName } = user;</code></pre>
+        <button class="demo-button" onclick="runES6Example()">
+          Run Example
+        </button>
+        <div class="output" id="es6-output"></div>
+      </div>
+
+      <h1>Day 21 → Mini Project: Todo List</h1>
+      <p><strong>Goal</strong>: Interactive task manager.</p>
+      <ul>
+        <li>Add new tasks (form + event listener).</li>
+        <li>Mark tasks complete (toggle class).</li>
+        <li>Delete tasks.</li>
+        <li>
+          Save tasks in <span class="code">localStorage</span> so refresh par
+          bhi tasks safe rahen.
+        </li>
+      </ul>
+
+      <div class="todo-container">
+        <h3>Todo List Application</h3>
+        <input
+          type="text"
+          class="todo-input"
+          id="todo-input"
+          placeholder="Enter a new task..."
+        />
+        <button class="demo-button" onclick="addTodo()">Add Task</button>
+
+        <ul class="todo-list" id="todo-list">
+          <!-- Todo items will be added here dynamically -->
+        </ul>
+
+        <div class="todo-stats">
+          <p>
+            Total Tasks: <span id="total-tasks">0</span> | Completed:
+            <span id="completed-tasks">0</span>
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // Dark Mode Toggle
+      function toggleDarkMode() {
+        document.body.classList.toggle("dark-mode");
+        const button = document.querySelector("header button");
+        if (document.body.classList.contains("dark-mode")) {
+          button.textContent = "Light Mode";
+          localStorage.setItem("darkMode", "enabled");
+        } else {
+          button.textContent = "Dark Mode";
+          localStorage.setItem("darkMode", "disabled");
+        }
+      }
+
+      // Check for saved dark mode preference
+      if (localStorage.getItem("darkMode") === "enabled") {
+        document.body.classList.add("dark-mode");
+        document.querySelector("header button").textContent = "Light Mode";
+      }
+
+      // Example Functions
+      function runVariableExample() {
+        let userName = "Ali";
+        const birthYear = 2000;
+        var score = 95;
+
+        document.getElementById(
+          "variable-output"
+        ).innerHTML = `Name: ${userName}<br>Birth Year: ${birthYear}<br>Score: ${score}`;
+      }
+
+      function runFunctionExample() {
+        function checkAge(age) {
+          if (age >= 18) {
+            return "Adult";
+          } else {
+            return "Minor";
+          }
+        }
+
+        let result = checkAge(20);
+        document.getElementById(
+          "function-output"
+        ).textContent = `Age 20 is: ${result}`;
+      }
+
+      function runArrayObjectExample() {
+        let fruits = ["Apple", "Banana", "Orange"];
+        fruits.push("Mango");
+
+        let person = {
+          firstName: "John",
+          lastName: "Doe",
+          age: 30,
+        };
+
+        document.getElementById(
+          "array-object-output"
+        ).innerHTML = `Fruits: ${fruits.join(", ")}<br>Person: ${
+          person.firstName
+        } ${person.lastName}, Age: ${person.age}`;
+      }
+
+      function changeText() {
+        const element = document.getElementById("dom-example");
+        element.textContent = "Text changed using JavaScript DOM manipulation!";
+      }
+
+      function changeColor() {
+        const element = document.getElementById("dom-example");
+        element.style.color = element.style.color === "red" ? "black" : "red";
+      }
+
+      function saveToLocalStorage() {
+        const input = document.getElementById("storage-input").value;
+        if (input) {
+          localStorage.setItem("savedText", input);
+          document.getElementById("storage-output").textContent =
+            "Text saved successfully!";
+        } else {
+          document.getElementById("storage-output").textContent =
+            "Please enter some text.";
+        }
+      }
+
+      function loadFromLocalStorage() {
+        const savedText = localStorage.getItem("savedText");
+        if (savedText) {
+          document.getElementById(
+            "storage-output"
+          ).textContent = `Saved text: ${savedText}`;
+        } else {
+          document.getElementById("storage-output").textContent =
+            "No text found in localStorage.";
+        }
+      }
+
+      function runES6Example() {
+        // Arrow function
+        const multiply = (a, b) => a * b;
+
+        // Template string
+        let name = "Alice";
+        let message = `Hello, ${name}! Welcome to JavaScript.`;
+
+        // Destructuring
+        let user = { firstName: "John", lastName: "Doe" };
+        let { firstName, lastName } = user;
+
+        document.getElementById(
+          "es6-output"
+        ).innerHTML = `Multiplication: 5 * 3 = ${multiply(5, 3)}<br>
+                 Message: ${message}<br>
+                 Destructured: First Name: ${firstName}, Last Name: ${lastName}`;
+      }
+
+      // Todo List Application
+      let todos = JSON.parse(localStorage.getItem("todos")) || [];
+
+      function renderTodos() {
+        const todoList = document.getElementById("todo-list");
+        todoList.innerHTML = "";
+
+        todos.forEach((todo, index) => {
+          const li = document.createElement("li");
+          li.className = "todo-item";
+          if (todo.completed) {
+            li.classList.add("completed");
+          }
+
+          li.innerHTML = `
+                    <span>${todo.text}</span>
+                    <div class="todo-actions">
+                        <button onclick="toggleTodo(${index})">${
+            todo.completed ? "Undo" : "Complete"
+          }</button>
+                        <button class="delete-btn" onclick="deleteTodo(${index})">Delete</button>
+                    </div>
+                `;
+
+          todoList.appendChild(li);
+        });
+
+        updateStats();
+      }
+
+      function addTodo() {
+        const input = document.getElementById("todo-input");
+        const text = input.value.trim();
+
+        if (text) {
+          todos.push({ text, completed: false });
+          localStorage.setItem("todos", JSON.stringify(todos));
+          input.value = "";
+          renderTodos();
+        }
+      }
+
+      function toggleTodo(index) {
+        todos[index].completed = !todos[index].completed;
+        localStorage.setItem("todos", JSON.stringify(todos));
+        renderTodos();
+      }
+
+      function deleteTodo(index) {
+        todos.splice(index, 1);
+        localStorage.setItem("todos", JSON.stringify(todos));
+        renderTodos();
+      }
+
+      function updateStats() {
+        const total = todos.length;
+        const completed = todos.filter((todo) => todo.completed).length;
+
+        document.getElementById("total-tasks").textContent = total;
+        document.getElementById("completed-tasks").textContent = completed;
+      }
+
+      // Allow adding todo with Enter key
+      document
+        .getElementById("todo-input")
+        .addEventListener("keypress", function (e) {
+          if (e.key === "Enter") {
+            addTodo();
+          }
+        });
+
+      // Initialize the todo list
+      renderTodos();
+    </script>
+  </body>
+</html>

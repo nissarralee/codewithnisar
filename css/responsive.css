@@ -1,0 +1,71 @@
+/* Responsive Design */
+@media (max-width: 968px) {
+  .hero {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .hero-content {
+    padding-right: 0;
+    margin-bottom: 50px;
+  }
+
+  .hero p {
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .nav-links {
+    display: none;
+    position: absolute;
+    top: 75px;
+    left: 0;
+    width: 100%;
+    background: rgba(26, 26, 46, 0.9);
+    flex-direction: column;
+    padding: 20px;
+    backdrop-filter: blur(10px);
+  }
+
+  [data-theme="light"] .nav-links {
+    background: rgba(230, 230, 230, 0.925);
+  }
+  .nav-links.active {
+    display: flex;
+  }
+
+  .nav-links li {
+    margin: 10px 0;
+    text-align: center;
+  }
+
+  .mobile-menu {
+    display: block;
+  }
+ .animation-container{
+  display: none;
+ }
+  .hero h1 {
+    font-size: 42px;
+  }
+
+  .section-title {
+    font-size: 36px;
+  }
+}
+
+@media (max-width: 480px) {
+  .card {
+    width: 100%;
+  }
+
+  .hero h1 {
+    font-size: 36px;
+  }
+
+  .contact-item {
+    min-width: 100%;
+  }
+}

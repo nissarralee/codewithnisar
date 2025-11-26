@@ -1,0 +1,1359 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CSS Flexbox Complete Guide</title>
+    <style>
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+/* CSS Reset and Base Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  line-height: 1.6;
+  color: #333;
+  background-color: #f9f9f9;
+  padding: 15px;
+  min-height: 100vh;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  padding: 25px;
+  transition: all 0.3s ease;
+}
+
+/* Header Styles */
+header {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 25px;
+}
+
+header::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 4px;
+  background: linear-gradient(90deg, #3498db, #2ecc71);
+  border-radius: 2px;
+}
+
+button {
+  background-color: #4a6fa5;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  min-width: 120px;
+}
+
+button:hover {
+  background-color: #3a5a80;
+  transform: translateY(-2px);
+}
+
+h1 {
+  color: #2c3e50;
+  font-size: clamp(1.8rem, 4vw, 2.5rem);
+  margin-bottom: 10px;
+  background: linear-gradient(90deg, #3498db, #2ecc71);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-align: center;
+  line-height: 1.3;
+}
+
+.subtitle {
+  color: #7f8c8d;
+  font-size: clamp(1rem, 2vw, 1.2rem);
+  margin-bottom: 20px;
+  text-align: center;
+  line-height: 1.5;
+}
+
+/* Section Styles */
+section {
+  margin-bottom: 40px;
+  padding: 20px;
+  background: #f8f9fa;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease;
+}
+
+section:hover {
+  transform: translateY(-5px);
+}
+
+h2 {
+  color: #3498db;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #eaeaea;
+  display: flex;
+  align-items: center;
+  font-size: clamp(1.3rem, 3vw, 1.8rem);
+}
+
+h2::before {
+  content: "";
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  background: #3498db;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+h3 {
+  color: #2980b9;
+  margin: 20px 0 15px;
+  font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+}
+
+p {
+  margin-bottom: 15px;
+  color: #555;
+  font-size: clamp(0.9rem, 1.8vw, 1.1rem);
+  line-height: 1.7;
+}
+
+ul,
+ol {
+  margin-left: 20px;
+  margin-bottom: 20px;
+}
+
+li {
+  margin-bottom: 8px;
+  color: #555;
+  font-size: clamp(0.9rem, 1.8vw, 1.1rem);
+  line-height: 1.6;
+}
+
+strong {
+  color: #e74c3c;
+}
+
+/* Code Styles */
+pre {
+  background: #2d2d2d;
+  color: #f8f8f2;
+  padding: 20px;
+  border-radius: 8px;
+  overflow-x: auto;
+  margin: 15px 0;
+  font-family: "Courier New", monospace;
+  font-size: clamp(0.8rem, 1.6vw, 0.9rem);
+  line-height: 1.5;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.code-block {
+  position: relative;
+}
+
+.code-block::before {
+  content: "CSS";
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: #3498db;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 0 8px 0 8px;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.tag {
+  color: #f92672;
+}
+
+.attr {
+  color: #a6e22e;
+}
+
+.val {
+  color: #e6db74;
+}
+
+.comment {
+  color: #75715e;
+}
+
+/* Interactive Demo Styles */
+.demo-container {
+  background: white;
+  border-radius: 10px;
+  padding: 20px;
+  margin: 20px 0;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+.demo-title {
+  font-size: clamp(1.1rem, 2.5vw, 1.3rem);
+  color: #2c3e50;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+}
+
+.demo-controls {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 15px;
+  margin-bottom: 20px;
+  padding: 15px;
+  background: #f8f9fa;
+  border-radius: 8px;
+}
+
+.control-group {
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  font-weight: bold;
+  margin-bottom: 8px;
+  color: #2c3e50;
+  font-size: 14px;
+}
+
+select,
+input {
+  padding: 10px 12px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 14px;
+  width: 100%;
+  transition: border-color 0.3s ease;
+}
+
+select:focus,
+input:focus {
+  outline: none;
+  border-color: #3498db;
+  box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
+}
+
+.flex-demo {
+  display: flex;
+  min-height: 150px;
+  border: 2px dashed #bdc3c7;
+  border-radius: 8px;
+  padding: 15px;
+  margin-bottom: 20px;
+  background: #f8f9fa;
+  transition: all 0.3s ease;
+  flex-wrap: wrap;
+}
+
+.flex-item {
+  background: linear-gradient(135deg, #3498db, #2980b9);
+  color: white;
+  padding: clamp(15px, 3vw, 20px);
+  margin: 5px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  min-width: 60px;
+  min-height: 60px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  font-size: clamp(0.8rem, 2vw, 1rem);
+  flex: 1 1 auto;
+}
+
+.flex-item:nth-child(2) {
+  background: linear-gradient(135deg, #2ecc71, #27ae60);
+}
+
+.flex-item:nth-child(3) {
+  background: linear-gradient(135deg, #e74c3c, #c0392b);
+}
+
+.flex-item:nth-child(4) {
+  background: linear-gradient(135deg, #f39c12, #d35400);
+}
+
+.flex-item:nth-child(5) {
+  background: linear-gradient(135deg, #9b59b6, #8e44ad);
+}
+
+.axis-indicator {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+  font-size: 14px;
+  color: #7f8c8d;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.main-axis {
+  color: #e74c3c;
+  font-weight: bold;
+}
+
+.cross-axis {
+  color: #3498db;
+  font-weight: bold;
+}
+
+/* Example Layouts */
+.example-layout {
+  margin: 25px 0;
+}
+
+.example-title {
+  font-size: clamp(1rem, 2.5vw, 1.2rem);
+  color: #2c3e50;
+  margin-bottom: 15px;
+  display: flex;
+  align-items: center;
+}
+
+.example-title::before {
+  content: "✅";
+  margin-right: 10px;
+}
+
+.example-code {
+  margin-bottom: 20px;
+}
+
+.example-demo {
+  border: 2px solid #eaeaea;
+  border-radius: 8px;
+  padding: 20px;
+  background: white;
+}
+
+/* Navbar Example */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #2c3e50;
+  padding: 15px 20px;
+  border-radius: 8px;
+  color: white;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.nav-logo {
+  font-weight: bold;
+  font-size: clamp(1rem, 2.5vw, 1.2rem);
+}
+
+.nav-links {
+  display: flex;
+  gap: 15px;
+  list-style: none;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.nav-links li {
+  color: white;
+  cursor: pointer;
+  padding: 5px 10px;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+.nav-links li:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Card Layout Example */
+.card-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.card {
+  background: white;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border-top: 4px solid #3498db;
+  transition: transform 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+.card h4 {
+  margin-bottom: 10px;
+  color: #2c3e50;
+  font-size: clamp(1rem, 2vw, 1.1rem);
+}
+
+.card p {
+  font-size: clamp(0.85rem, 1.8vw, 0.95rem);
+}
+
+/* Centering Example */
+.center-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 150px;
+  background: #f8f9fa;
+  border-radius: 8px;
+  border: 2px dashed #bdc3c7;
+  padding: 20px;
+}
+
+.center-box {
+  background: #3498db;
+  color: white;
+  padding: clamp(15px, 3vw, 20px) clamp(20px, 4vw, 30px);
+  border-radius: 6px;
+  font-weight: bold;
+  text-align: center;
+  font-size: clamp(0.9rem, 2vw, 1.1rem);
+}
+
+/* Cheat Sheet */
+.cheat-sheet {
+  background: #2c3e50;
+  color: white;
+  padding: 25px;
+  border-radius: 10px;
+  margin-top: 30px;
+}
+
+.cheat-sheet h2 {
+  color: white;
+  border-bottom-color: #34495e;
+}
+
+.cheat-sheet pre {
+  background: #34495e;
+}
+
+/* Animation for examples */
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.pulse {
+  animation: pulse 2s infinite;
+}
+
+/* Dark Mode Styles */
+body.dark-mode {
+  background-color: #1a1a1a;
+  color: #e0e0e0;
+}
+
+body.dark-mode .container {
+  background-color: #2d2d2d;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+}
+
+body.dark-mode section {
+  background-color: #2c2c2c;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+body.dark-mode h1 {
+  background: linear-gradient(90deg, #5dade2, #58d68d);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+body.dark-mode h2 {
+  color: #5dade2;
+  border-bottom-color: #444;
+}
+
+body.dark-mode h3 {
+  color: #85c1e9;
+}
+
+body.dark-mode p {
+  color: #bdc3c7;
+}
+
+body.dark-mode li {
+  color: #bdc3c7;
+}
+
+body.dark-mode strong {
+  color: #e74c3c;
+}
+
+body.dark-mode .subtitle {
+  color: #95a5a6;
+}
+
+body.dark-mode .demo-container {
+  background: #34495e;
+  border-color: #4a6572;
+}
+
+body.dark-mode .demo-controls {
+  background: #2c3e50;
+}
+
+body.dark-mode label {
+  color: #ecf0f1;
+}
+
+body.dark-mode select,
+body.dark-mode input {
+  background: #34495e;
+  border-color: #4a6572;
+  color: #ecf0f1;
+}
+
+body.dark-mode .flex-demo {
+  background: #2c3e50;
+  border-color: #4a6572;
+}
+
+body.dark-mode .flex-item {
+  background: linear-gradient(135deg, #2980b9, #21618c);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+body.dark-mode .flex-item:nth-child(2) {
+  background: linear-gradient(135deg, #27ae60, #1e8449);
+}
+
+body.dark-mode .flex-item:nth-child(3) {
+  background: linear-gradient(135deg, #c0392b, #a93226);
+}
+
+body.dark-mode .flex-item:nth-child(4) {
+  background: linear-gradient(135deg, #d68910, #b9770e);
+}
+
+body.dark-mode .flex-item:nth-child(5) {
+  background: linear-gradient(135deg, #8e44ad, #7d3c98);
+}
+
+body.dark-mode .axis-indicator {
+  color: #95a5a6;
+}
+
+body.dark-mode .main-axis {
+  color: #e74c3c;
+}
+
+body.dark-mode .cross-axis {
+  color: #3498db;
+}
+
+body.dark-mode .example-demo {
+  background: #34495e;
+  border-color: #4a6572;
+}
+
+body.dark-mode .navbar {
+  background: #34495e;
+}
+
+body.dark-mode .card {
+  background: #34495e;
+  border-top-color: #3498db;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+body.dark-mode .card h4 {
+  color: #ecf0f1;
+}
+
+body.dark-mode .center-container {
+  background: #2c3e50;
+  border-color: #4a6572;
+}
+
+body.dark-mode .center-box {
+  background: #2980b9;
+}
+
+body.dark-mode .cheat-sheet {
+  background: #34495e;
+}
+
+body.dark-mode .cheat-sheet h2 {
+  color: #ecf0f1;
+  border-bottom-color: #4a6572;
+}
+
+body.dark-mode .cheat-sheet pre {
+  background: #2c3e50;
+}
+
+body.dark-mode pre {
+  background: #1a1a1a;
+  border-left: 4px solid #3498db;
+}
+
+body.dark-mode .code-block::before {
+  background: #3498db;
+}
+
+body.dark-mode button {
+  background-color: #34495e;
+}
+
+body.dark-mode button:hover {
+  background-color: #2c3e50;
+}
+
+/* Responsive Design - Media Queries */
+@media (max-width: 1200px) {
+  .container {
+    padding: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  body {
+    padding: 10px;
+  }
+  
+  .container {
+    padding: 15px;
+    border-radius: 8px;
+  }
+  
+  section {
+    padding: 15px;
+    margin-bottom: 30px;
+  }
+  
+  header {
+    margin-bottom: 20px;
+  }
+  
+  button {
+    padding: 10px 20px;
+    font-size: 14px;
+    min-width: 100px;
+  }
+  
+  .demo-controls {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  
+  .flex-demo {
+    min-height: 120px;
+    padding: 10px;
+  }
+  
+  .flex-item {
+    min-width: 50px;
+    min-height: 50px;
+    padding: 12px;
+    font-size: 0.8rem;
+  }
+  
+  .card-container {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+  
+  .navbar {
+    flex-direction: column;
+    text-align: center;
+    padding: 15px;
+  }
+  
+  .nav-links {
+    justify-content: center;
+  }
+  
+  .center-container {
+    height: 120px;
+    padding: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  body {
+    padding: 5px;
+  }
+  
+  .container {
+    padding: 12px;
+    border-radius: 6px;
+  }
+  
+  section {
+    padding: 12px;
+    margin-bottom: 25px;
+  }
+  
+  h2 {
+    font-size: 1.2rem;
+  }
+  
+  h3 {
+    font-size: 1.1rem;
+  }
+  
+  .demo-container {
+    padding: 15px;
+  }
+  
+  .flex-demo {
+    min-height: 100px;
+  }
+  
+  .flex-item {
+    min-width: 40px;
+    min-height: 40px;
+    padding: 8px;
+    font-size: 0.7rem;
+    margin: 3px;
+  }
+  
+  pre {
+    padding: 15px;
+    font-size: 0.75rem;
+  }
+  
+  .cheat-sheet {
+    padding: 20px;
+  }
+  
+  .axis-indicator {
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+  }
+}
+
+@media (max-width: 320px) {
+  .container {
+    padding: 10px;
+  }
+  
+  section {
+    padding: 10px;
+  }
+  
+  .flex-item {
+    min-width: 35px;
+    min-height: 35px;
+    padding: 6px;
+    font-size: 0.6rem;
+  }
+  
+  button {
+    padding: 8px 16px;
+    font-size: 13px;
+    min-width: 90px;
+  }
+}
+
+/* Print Styles */
+@media print {
+  body {
+    background: white;
+    color: black;
+    padding: 0;
+  }
+  
+  .container {
+    box-shadow: none;
+    padding: 0;
+  }
+  
+  button {
+    display: none;
+  }
+  
+  section {
+    break-inside: avoid;
+    box-shadow: none;
+    border: 1px solid #ddd;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .flex-item {
+    border: 2px solid white;
+  }
+  
+  .card {
+    border: 2px solid #3498db;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  
+  .pulse {
+    animation: none;
+  }
+  
+  section:hover {
+    transform: none;
+  }
+  
+  .card:hover {
+    transform: none;
+  }
+  
+  button:hover {
+    transform: none;
+  }
+}
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <header>
+            <button onclick="toggleDarkMode()">Dark Mode</button>
+
+      </header>
+
+      <section id="intro">
+        <h1>CSS Flexbox Complete Guide</h1>
+        <p class="subtitle">
+          Yeh guide aapko CSS Flexbox ko
+          <strong>step-by-step detail</strong> aur
+          <strong>interactive examples</strong> ke sath samjhayegi
+        </p>
+        <h2>1. Flexbox Kya Hai?</h2>
+        <p>
+          Flexbox (Flexible Box Layout) CSS ka
+          <strong>one-dimensional</strong> layout system hai. Iska kaam elements
+          ko <strong>row (line)</strong> ya
+          <strong>column (vertically)</strong> arrange karna aur unka size/space
+          automatically adjust karna hai.
+        </p>
+
+        <h3>Kyun use karein?</h3>
+        <ul>
+          <li>
+            <strong>Responsive Design</strong>: Mobile se desktop tak layout
+            adjust hota hai.
+          </li>
+          <li>
+            <strong>Easy Centering</strong>: Element ko horizontally +
+            vertically center karna bohat simple.
+          </li>
+          <li>
+            <strong>Less Code</strong>: Float ya positioning ki tension nahi.
+          </li>
+        </ul>
+      </section>
+
+      <section id="container">
+        <h2>2. Flex Container Shuru Karna</h2>
+        <p>Flexbox activate karne ke liye parent element par:</p>
+
+        <div class="code-block">
+          <pre><code><span class="tag">.container</span> {
+  <span class="attr">display</span>: <span class="val">flex</span>;      <span class="comment">/* block level flex */</span>
+  <span class="comment">/* ya */</span>
+  <span class="attr">display</span>: <span class="val">inline-flex</span>; <span class="comment">/* inline flex */</span>
+}</code></pre>
+        </div>
+
+        <p>
+          Container ke andar jitne bhi direct child elements hain, wo
+          <strong>flex items</strong> ban jate hain.
+        </p>
+      </section>
+
+      <section id="axis">
+        <h2>3. Main Axis vs Cross Axis</h2>
+        <p>Flexbox ko aik road ki tarah socho:</p>
+        <ul>
+          <li>
+            <strong>Main Axis</strong>: Jis direction main items flow karte
+            hain.
+          </li>
+          <li>
+            <strong>Cross Axis</strong>: Main axis ke perpendicular direction.
+          </li>
+        </ul>
+
+        <div class="demo-container">
+          <h3>Axis Visualization</h3>
+          <div class="demo-controls">
+            <div class="control-group">
+              <label for="flexDirection">flex-direction:</label>
+              <select id="flexDirection" onchange="updateFlexDemo()">
+                <option value="row">row (default)</option>
+                <option value="row-reverse">row-reverse</option>
+                <option value="column">column</option>
+                <option value="column-reverse">column-reverse</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="flex-demo" id="axisDemo">
+            <div class="flex-item">1</div>
+            <div class="flex-item">2</div>
+            <div class="flex-item">3</div>
+          </div>
+
+          <div class="axis-indicator">
+            <span class="main-axis" id="mainAxisLabel">Main Axis: →</span>
+            <span class="cross-axis" id="crossAxisLabel">Cross Axis: ↓</span>
+          </div>
+        </div>
+      </section>
+
+      <section id="container-properties">
+        <h2>4. Flex Container Properties</h2>
+        <p>Parent container par yeh properties lagti hain:</p>
+
+        <div class="demo-container">
+          <h3>Interactive Flex Container</h3>
+          <div class="demo-controls">
+            <div class="control-group">
+              <label for="justifyContent">justify-content:</label>
+              <select id="justifyContent" onchange="updateFlexDemo()">
+                <option value="flex-start">flex-start</option>
+                <option value="flex-end">flex-end</option>
+                <option value="center">center</option>
+                <option value="space-between">space-between</option>
+                <option value="space-around">space-around</option>
+                <option value="space-evenly">space-evenly</option>
+              </select>
+            </div>
+
+            <div class="control-group">
+              <label for="alignItems">align-items:</label>
+              <select id="alignItems" onchange="updateFlexDemo()">
+                <option value="stretch">stretch</option>
+                <option value="flex-start">flex-start</option>
+                <option value="flex-end">flex-end</option>
+                <option value="center">center</option>
+                <option value="baseline">baseline</option>
+              </select>
+            </div>
+
+            <div class="control-group">
+              <label for="flexWrap">flex-wrap:</label>
+              <select id="flexWrap" onchange="updateFlexDemo()">
+                <option value="nowrap">nowrap</option>
+                <option value="wrap">wrap</option>
+                <option value="wrap-reverse">wrap-reverse</option>
+              </select>
+            </div>
+
+            <div class="control-group">
+              <label for="gap">gap (px):</label>
+              <input
+                type="range"
+                id="gap"
+                min="0"
+                max="30"
+                value="5"
+                oninput="updateFlexDemo()"
+              />
+              <span id="gapValue">5px</span>
+            </div>
+          </div>
+
+          <div class="flex-demo" id="containerDemo">
+            <div class="flex-item">Item 1</div>
+            <div class="flex-item">Item 2</div>
+            <div class="flex-item">Item 3</div>
+            <div class="flex-item">Item 4</div>
+            <div class="flex-item">Item 5</div>
+          </div>
+        </div>
+
+        <h3>A. flex-direction</h3>
+        <p>Items ki direction set karta hai.</p>
+
+        <div class="code-block">
+          <pre><code><span class="tag">.container</span> {
+  <span class="attr">display</span>: <span class="val">flex</span>;
+  <span class="attr">flex-direction</span>: <span class="val">column</span>;
+}</code></pre>
+        </div>
+
+        <h3>B. flex-wrap</h3>
+        <p>Items ko ek line main rakhe ya wrap kare.</p>
+
+        <h3>C. justify-content (Main Axis Alignment)</h3>
+        <p>Items ko <strong>main axis</strong> par align karta hai.</p>
+
+        <h3>D. align-items (Cross Axis Alignment)</h3>
+        <p>Items ko <strong>cross axis</strong> par align karta hai.</p>
+
+        <h3>E. gap</h3>
+        <p>Items ke darmiyan direct space add karta hai.</p>
+      </section>
+
+      <section id="item-properties">
+        <h2>5. Flex Item Properties</h2>
+        <p>Yeh <strong>child elements</strong> par lagte hain:</p>
+
+        <div class="demo-container">
+          <h3>Interactive Flex Items</h3>
+          <div class="demo-controls">
+            <div class="control-group">
+              <label for="flexGrow">flex-grow:</label>
+              <input
+                type="range"
+                id="flexGrow"
+                min="0"
+                max="3"
+                value="0"
+                oninput="updateItemDemo()"
+              />
+              <span id="growValue">0</span>
+            </div>
+
+            <div class="control-group">
+              <label for="alignSelf">align-self:</label>
+              <select id="alignSelf" onchange="updateItemDemo()">
+                <option value="auto">auto</option>
+                <option value="flex-start">flex-start</option>
+                <option value="flex-end">flex-end</option>
+                <option value="center">center</option>
+                <option value="baseline">baseline</option>
+                <option value="stretch">stretch</option>
+              </select>
+            </div>
+
+            <div class="control-group">
+              <label for="order">order:</label>
+              <input
+                type="range"
+                id="order"
+                min="-1"
+                max="3"
+                value="0"
+                oninput="updateItemDemo()"
+              />
+              <span id="orderValue">0</span>
+            </div>
+          </div>
+
+          <div class="flex-demo" id="itemDemo">
+            <div class="flex-item" id="specialItem">Special Item</div>
+            <div class="flex-item">Item 2</div>
+            <div class="flex-item">Item 3</div>
+          </div>
+        </div>
+
+        <h3>A. order</h3>
+        <p>Item ka order change karne ke liye.</p>
+
+        <h3>B. flex-grow</h3>
+        <p>Extra space main item kitna grow kare.</p>
+
+        <h3>C. align-self</h3>
+        <p>Kisi single item ki cross-axis alignment change.</p>
+      </section>
+
+      <section id="examples">
+        <h2>6. Practical Examples</h2>
+
+        <div class="example-layout">
+          <h3 class="example-title">1. Perfect Centering</h3>
+          <div class="example-code">
+            <div class="code-block">
+              <pre><code><span class="tag">.container</span> {
+  <span class="attr">display</span>: <span class="val">flex</span>;
+  <span class="attr">justify-content</span>: <span class="val">center</span>;
+  <span class="attr">align-items</span>: <span class="val">center</span>;
+  <span class="attr">height</span>: <span class="val">100vh</span>;
+}</code></pre>
+            </div>
+          </div>
+          <div class="example-demo">
+            <div class="center-container">
+              <div class="center-box pulse">Perfectly Centered!</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="example-layout">
+          <h3 class="example-title">2. Responsive Navbar</h3>
+          <div class="example-code">
+            <div class="code-block">
+              <pre><code><span class="tag">.nav</span> {
+  <span class="attr">display</span>: <span class="val">flex</span>;
+  <span class="attr">justify-content</span>: <span class="val">space-between</span>;
+  <span class="attr">align-items</span>: <span class="val">center</span>;
+  <span class="attr">background</span>: <span class="val">#333</span>;
+  <span class="attr">padding</span>: <span class="val">10px 20px</span>;
+}</code></pre>
+            </div>
+          </div>
+          <div class="example-demo">
+            <nav class="navbar">
+              <div class="nav-logo">MyWebsite</div>
+              <ul class="nav-links">
+                <li>Home</li>
+                <li>About</li>
+                <li>Services</li>
+                <li>Contact</li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+
+        <div class="example-layout">
+          <h3 class="example-title">3. Equal Height Columns</h3>
+          <div class="example-code">
+            <div class="code-block">
+              <pre><code><span class="tag">.container</span> {
+  <span class="attr">display</span>: <span class="val">flex</span>;
+  <span class="attr">gap</span>: <span class="val">10px</span>;
+}
+<span class="tag">.column</span> {
+  <span class="attr">flex</span>: <span class="val">1</span>;
+  <span class="attr">background</span>: <span class="val">#ddd</span>;
+  <span class="attr">padding</span>: <span class="val">20px</span>;
+}</code></pre>
+            </div>
+          </div>
+          <div class="example-demo">
+            <div class="card-container">
+              <div class="card">
+                <h4>Column 1</h4>
+                <p>
+                  This column will automatically have the same height as other
+                  columns.
+                </p>
+              </div>
+              <div class="card">
+                <h4>Column 2</h4>
+                <p>
+                  Flexbox makes equal height columns incredibly easy without any
+                  JavaScript.
+                </p>
+                <p>All columns will match the height of the tallest one.</p>
+              </div>
+              <div class="card">
+                <h4>Column 3</h4>
+                <p>Simple and effective responsive layout.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="example-layout">
+          <h3 class="example-title">4. Card Layout with Wrapping</h3>
+          <div class="example-demo">
+            <div class="card-container">
+              <div class="card">
+                <h4>Card 1</h4>
+                <p>Flexible card that wraps on smaller screens.</p>
+              </div>
+              <div class="card">
+                <h4>Card 2</h4>
+                <p>Automatically adjusts to available space.</p>
+              </div>
+              <div class="card">
+                <h4>Card 3</h4>
+                <p>Perfect for product listings and galleries.</p>
+              </div>
+              <div class="card">
+                <h4>Card 4</h4>
+                <p>Responsive without media queries.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="tips">
+        <h2>7. Tips & Best Practices</h2>
+        <ul>
+          <li>
+            <strong>`gap` use karein</strong> margin ki jagah par clean spacing
+            ke liye.
+          </li>
+          <li>Equal width ke liye <strong>`flex: 1;`</strong> best hai.</li>
+          <li>
+            Responsive design ke liye <strong>media queries</strong> sath use
+            karein.
+          </li>
+          <li>
+            2D grid layout ke liye <strong>CSS Grid</strong> consider karein.
+          </li>
+        </ul>
+      </section>
+
+      <section class="cheat-sheet">
+        <h2>Quick Cheat Sheet</h2>
+        <div class="code-block">
+          <pre><code><span class="comment">/* Container Properties */</span>
+<span class="tag">.container</span> {
+  <span class="attr">display</span>: <span class="val">flex</span>;
+  <span class="attr">flex-direction</span>: <span class="val">row | column</span>;
+  <span class="attr">flex-wrap</span>: <span class="val">wrap | nowrap</span>;
+  <span class="attr">justify-content</span>: <span class="val">center | space-between</span>;
+  <span class="attr">align-items</span>: <span class="val">center | stretch</span>;
+  <span class="attr">align-content</span>: <span class="val">space-around</span>;
+  <span class="attr">gap</span>: <span class="val">20px</span>;
+}
+
+<span class="comment">/* Item Properties */</span>
+<span class="tag">.item</span> {
+  <span class="attr">order</span>: <span class="val">0</span>;
+  <span class="attr">flex</span>: <span class="val">1 1 auto</span>;
+  <span class="attr">align-self</span>: <span class="val">flex-start</span>;
+}</code></pre>
+        </div>
+      </section>
+
+      <section id="summary">
+        <h2>Summary</h2>
+        <p>
+          Flexbox CSS ka bohat powerful tool hai jo <strong>responsive</strong>,
+          <strong>centered</strong>, aur <strong>clean layouts</strong> banane
+          main madad karta hai.
+        </p>
+        <p>
+          Is guide ki practice se aap easily navbars, cards, ya complete
+          responsive pages design kar sakte hain.
+        </p>
+      </section>
+    </div>
+
+    <script>
+         // Dark Mode Toggle
+        function toggleDarkMode() {
+            document.body.classList.toggle('dark-mode');
+            const button = document.querySelector('header button');
+            if (document.body.classList.contains('dark-mode')) {
+                button.textContent = 'Light Mode';
+                localStorage.setItem('darkMode', 'enabled');
+            } else {
+                button.textContent = 'Dark Mode';
+                localStorage.setItem('darkMode', 'disabled');
+            }
+        }
+
+      // Update axis visualization
+      function updateAxisLabels(direction) {
+        const mainAxisLabel = document.getElementById("mainAxisLabel");
+        const crossAxisLabel = document.getElementById("crossAxisLabel");
+
+        switch (direction) {
+          case "row":
+            mainAxisLabel.textContent = "Main Axis: →";
+            crossAxisLabel.textContent = "Cross Axis: ↓";
+            break;
+          case "row-reverse":
+            mainAxisLabel.textContent = "Main Axis: ←";
+            crossAxisLabel.textContent = "Cross Axis: ↓";
+            break;
+          case "column":
+            mainAxisLabel.textContent = "Main Axis: ↓";
+            crossAxisLabel.textContent = "Cross Axis: →";
+            break;
+          case "column-reverse":
+            mainAxisLabel.textContent = "Main Axis: ↑";
+            crossAxisLabel.textContent = "Cross Axis: →";
+            break;
+        }
+      }
+
+      // Update flex container demo
+      function updateFlexDemo() {
+        const container = document.getElementById("containerDemo");
+        const direction = document.getElementById("flexDirection").value;
+        const justifyContent = document.getElementById("justifyContent").value;
+        const alignItems = document.getElementById("alignItems").value;
+        const flexWrap = document.getElementById("flexWrap").value;
+        const gap = document.getElementById("gap").value;
+
+        // Update container styles
+        container.style.flexDirection = direction;
+        container.style.justifyContent = justifyContent;
+        container.style.alignItems = alignItems;
+        container.style.flexWrap = flexWrap;
+        container.style.gap = `${gap}px`;
+
+        // Update gap value display
+        document.getElementById("gapValue").textContent = `${gap}px`;
+
+        // Update axis demo as well
+        updateAxisDemo();
+      }
+
+      // Update axis demo
+      function updateAxisDemo() {
+        const axisDemo = document.getElementById("axisDemo");
+        const direction = document.getElementById("flexDirection").value;
+
+        axisDemo.style.flexDirection = direction;
+        updateAxisLabels(direction);
+      }
+
+      // Update item properties demo
+      function updateItemDemo() {
+        const specialItem = document.getElementById("specialItem");
+        const flexGrow = document.getElementById("flexGrow").value;
+        const alignSelf = document.getElementById("alignSelf").value;
+        const order = document.getElementById("order").value;
+
+        // Update item styles
+        specialItem.style.flexGrow = flexGrow;
+        specialItem.style.alignSelf = alignSelf;
+        specialItem.style.order = order;
+
+        // Update value displays
+        document.getElementById("growValue").textContent = flexGrow;
+        document.getElementById("orderValue").textContent = order;
+      }
+
+      // Initialize demos
+      document.addEventListener("DOMContentLoaded", function () {
+        updateFlexDemo();
+        updateItemDemo();
+      });
+    </script>
+  </body>
+</html>

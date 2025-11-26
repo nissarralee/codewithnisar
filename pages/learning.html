@@ -1,0 +1,1204 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Learning - CodeWithNisar</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="icon" href="/logo/code.png">
+  <link rel="stylesheet" href="/css/responsive.css">
+  <style>
+    @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Poppins", sans-serif;
+      font-weight: 500;
+      font-style: normal;
+    }
+
+    ::-webkit-scrollbar {
+      width: 0px;
+      scroll-behavior: smooth;
+    }
+
+    :root {
+      --primary: #8a2be2;
+      --secondary: #6a0dad;
+      --accent: #ff6b8b;
+      --dark: #1a1a2e;
+      --darker: #0f0f1c;
+      --light: #f8f9fa;
+      --text: #e8e8e8;
+      --text-light: #b0b0b0;
+      --gradient: linear-gradient(135deg,
+          #8a2be2 0%,
+          #6a0dad 50%,
+          #4b0082 100%);
+      --card-bg: rgba(255, 255, 255, 0.08);
+      --glass: rgba(255, 255, 255, 0.1);
+      --shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    }
+
+    [data-theme="light"] {
+      --dark: #f0f2f5;
+      --darker: #e4e6e9;
+      --light: #1a1a2e;
+      --text: #2a2a3c;
+      --text-light: #5a5a6e;
+      --card-bg: rgba(26, 26, 46, 0.08);
+      --glass: rgba(26, 26, 46, 0.1);
+      --shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    }
+
+    body {
+      background: linear-gradient(135deg, var(--dark) 0%, var(--darker) 100%);
+      color: var(--text);
+      min-height: 100vh;
+      overflow-x: hidden;
+      background-attachment: fixed;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    p {
+      text-align: center;
+    }
+
+    /* Header Styles */
+    header {
+      padding: 20px 0;
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1000;
+      background: rgba(26, 26, 46, 0.9);
+      backdrop-filter: blur(10px);
+      transition: all 0.3s ease;
+    }
+
+    [data-theme="light"] header {
+      background: rgba(240, 242, 245, 0.504);
+    }
+
+
+    header.scrolled {
+      padding: 15px 0;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--light);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+    }
+
+    .logo span {
+      color: var(--primary);
+      text-shadow: 0 0 10px rgba(138, 43, 226, 0.5);
+    }
+
+    .logo img {
+      width: 50px;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      list-style: none;
+    }
+
+    .nav-links li {
+      margin-left: 30px;
+    }
+
+    .nav-links a {
+      color: var(--text);
+      text-decoration: none;
+      font-weight: 500;
+      transition: all 0.3s;
+      position: relative;
+      padding: 5px 0;
+    }
+
+    .nav-links a:hover {
+      color: var(--primary);
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: 0;
+      left: 0;
+      background: var(--gradient);
+      transition: width 0.3s;
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    [data-theme="light"] .nav-links a {
+      color: var(--text-light);
+    }
+
+    /* Theme-Toggle and Language Switcher */
+    .theme-toggle,
+    .language-switcher {
+      background: var(--card-bg);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      color: var(--text);
+      padding: 8px 15px;
+      border-radius: 20px;
+      cursor: pointer;
+      transition: all 0.3s;
+      backdrop-filter: blur(10px);
+    }
+
+    .theme-toggle:hover,
+    .language-switcher:hover {
+      background: var(--primary);
+      color: white;
+    }
+
+    /* === Mobile Menu Icon === */
+    .mobile-menu {
+      display: none;
+      font-size: 1.8rem;
+      color: #fff;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      z-index: 1001;
+    }
+
+    .mobile-menu.active {
+      color: var(--primary);
+    }
+
+    /* Hero Section */
+    .learning-hero {
+      padding: 120px 0 80px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .learning-hero::before {
+      content: "";
+      position: absolute;
+      width: 400px;
+      height: 400px;
+      border-radius: 50%;
+      background: var(--primary);
+      filter: blur(100px);
+      opacity: 0.2;
+      top: -150px;
+      right: -100px;
+      z-index: -1;
+    }
+
+    .learning-hero::after {
+      content: "";
+      position: absolute;
+      width: 300px;
+      height: 300px;
+      border-radius: 50%;
+      background: var(--accent);
+      filter: blur(80px);
+      opacity: 0.15;
+      bottom: -100px;
+      left: -100px;
+      z-index: -1;
+    }
+
+    .learning-hero h1 {
+      font-size: 48px;
+      margin-bottom: 20px;
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .learning-hero p {
+      font-size: 20px;
+      line-height: 1.6;
+      max-width: 800px;
+      margin: 0 auto 40px;
+      color: var(--text-light);
+    }
+
+    /* Learning Path Section */
+    .learning-path {
+      padding: 80px 0;
+      text-align: center;
+    }
+
+    .section-title {
+      font-size: 36px;
+      margin-bottom: 50px;
+      text-align: center;
+      position: relative;
+    }
+
+    .section-title::after {
+      content: "";
+      position: absolute;
+      width: 80px;
+      height: 4px;
+      background: var(--gradient);
+      bottom: -15px;
+      left: 50%;
+      transform: translateX(-50%);
+      border-radius: 2px;
+    }
+
+    .path-steps {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 30px;
+      margin-top: 50px;
+    }
+
+    .path-step {
+      background: var(--card-bg);
+      border-radius: 15px;
+      padding: 30px;
+      width: 350px;
+      transition: all 0.3s;
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      position: relative;
+      text-align: left;
+    }
+
+    .path-step::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: var(--gradient);
+    }
+
+    .path-step:hover {
+      transform: translateY(-10px);
+      box-shadow: var(--shadow);
+    }
+
+    .step-number {
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 15px;
+      display: flex;
+      align-items: center;
+    }
+
+    .step-number::before {
+      content: "";
+      width: 30px;
+      height: 30px;
+      background: var(--gradient);
+      border-radius: 50%;
+      margin-right: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 16px;
+    }
+
+    .path-step:nth-child(1) .step-number::before {
+      content: "1";
+    }
+
+    .path-step:nth-child(2) .step-number::before {
+      content: "2";
+    }
+
+    .path-step:nth-child(3) .step-number::before {
+      content: "3";
+    }
+
+    .path-step h3 {
+      font-size: 22px;
+      margin-bottom: 15px;
+      color: var(--light);
+    }
+
+    .path-step p {
+      color: var(--text-light);
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+
+    .step-features {
+      list-style: none;
+      margin-top: 20px;
+    }
+
+    .step-features li {
+      padding: 8px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      display: flex;
+      align-items: center;
+    }
+
+    .step-features li i {
+      color: var(--primary);
+      margin-right: 10px;
+    }
+
+    /* Courses Section */
+    .courses-section {
+      padding: 80px 0;
+      background: var(--card-bg);
+      backdrop-filter: blur(10px);
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .courses-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 30px;
+      margin-top: 50px;
+    }
+
+    .course-card {
+      background: var(--darker);
+      border-radius: 15px;
+      overflow: hidden;
+      transition: all 0.3s;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .course-card:hover {
+      transform: translateY(-10px);
+      box-shadow: var(--shadow);
+    }
+
+    .course-header {
+      padding: 25px;
+      background: var(--gradient);
+      text-align: center;
+    }
+
+    .course-icon {
+      font-size: 40px;
+      margin-bottom: 15px;
+    }
+
+    .course-header h3 {
+      font-size: 24px;
+      margin-bottom: 10px;
+    }
+
+    [data-theme="light"] .course-header h3 {
+      color: var(--darker);
+    }
+
+    .course-level {
+      font-size: 14px;
+      opacity: 0.9;
+    }
+
+    [data-theme="light"] .course-level {
+      color: var(--darker);
+    }
+
+    .course-content {
+      padding: 25px;
+    }
+
+    .course-features {
+      list-style: none;
+      margin: 20px 0;
+    }
+
+    .course-features li {
+      padding: 8px 0;
+      display: flex;
+      align-items: center;
+    }
+
+    .course-features li i {
+      color: var(--primary);
+      margin-right: 10px;
+    }
+
+    .course-duration {
+      display: flex;
+      justify-content: space-between;
+      margin: 20px 0;
+      font-size: 14px;
+      color: var(--text-light);
+    }
+
+    .cta-button {
+      display: inline-block;
+      background: var(--gradient);
+      color: white;
+      padding: 12px 25px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s;
+      box-shadow: 0 5px 15px rgba(138, 43, 226, 0.3);
+      width: 100%;
+      text-align: center;
+    }
+
+    .cta-button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(138, 43, 226, 0.4);
+    }
+
+    .btn-outline {
+      background: transparent;
+      border: 2px solid var(--primary);
+      color: var(--primary);
+    }
+
+    .btn-outline:hover {
+      background: var(--primary);
+      color: white;
+    }
+
+    /* Resources Section */
+    .resources-section {
+      padding: 80px 0;
+    }
+
+    .resources-tabs {
+      display: flex;
+      justify-content: center;
+      margin-top: 20px;
+      margin-bottom: 40px;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .tab-button {
+      padding: 12px 25px;
+      background: var(--card-bg);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 50px;
+      color: var(--text);
+      cursor: pointer;
+      transition: all 0.3s;
+      font-weight: 500;
+    }
+
+    .tab-button.active {
+      background: var(--gradient);
+      color: white;
+    }
+
+    .tab-content {
+      display: none;
+    }
+
+    .tab-content.active {
+      display: block;
+    }
+
+    .resources-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 25px;
+    }
+
+    .resource-card {
+      background: var(--card-bg);
+      border-radius: 15px;
+      padding: 25px;
+      transition: all 0.3s;
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .resource-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow);
+    }
+
+    .resource-icon {
+      font-size: 30px;
+      color: var(--primary);
+      margin-bottom: 15px;
+    }
+
+    .resource-card h3 {
+      font-size: 20px;
+      margin-bottom: 10px;
+      color: var(--light);
+    }
+
+    .resource-card p {
+      color: var(--text-light);
+      margin-bottom: 15px;
+      font-size: 14px;
+    }
+
+    .resource-link {
+      display: inline-flex;
+      align-items: center;
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: 500;
+      transition: all 0.3s;
+    }
+
+    .resource-link:hover {
+      color: var(--accent);
+      transform: translateX(5px);
+    }
+
+    .resource-link i {
+      margin-left: 5px;
+      transition: transform 0.3s;
+    }
+
+    .resource-link:hover i {
+      transform: translateX(3px);
+    }
+
+    /* Projects Section */
+    .projects-section {
+      padding: 80px 0;
+      background: var(--card-bg);
+      backdrop-filter: blur(10px);
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      margin-top: 50px;
+    }
+
+    .project-card {
+      background: var(--darker);
+      border-radius: 15px;
+      overflow: hidden;
+      transition: all 0.3s;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .project-card:hover {
+      transform: translateY(-10px);
+      box-shadow: var(--shadow);
+    }
+
+    .project-image {
+      height: 180px;
+      background: var(--gradient);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 50px;
+    }
+
+    .project-content {
+      padding: 25px;
+    }
+
+    .project-content h3 {
+      font-size: 20px;
+      margin-bottom: 10px;
+      color: var(--light);
+    }
+
+    .project-content p {
+      color: var(--text-light);
+      margin-bottom: 20px;
+      font-size: 14px;
+    }
+
+    .project-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 20px;
+    }
+
+    .project-tag {
+      background: rgba(138, 43, 226, 0.2);
+      color: var(--primary);
+      padding: 5px 10px;
+      border-radius: 20px;
+      font-size: 12px;
+    }
+
+    /* Footer */
+    footer {
+      padding: 30px 0;
+      text-align: center;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      color: #aaa;
+      font-size: 14px;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 968px) {
+      .learning-hero h1 {
+        font-size: 42px;
+      }
+
+      .learning-hero p {
+        font-size: 18px;
+      }
+
+      .path-steps {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .path-step {
+        width: 100%;
+        max-width: 500px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        background: rgba(26, 26, 46, 0.95);
+        flex-direction: column;
+        padding: 20px;
+        backdrop-filter: blur(10px);
+      }
+
+      .nav-links.active {
+        display: flex;
+      }
+
+      .nav-links li {
+        margin: 10px 0;
+        text-align: center;
+      }
+
+      .mobile-menu {
+        display: block;
+      }
+
+      .learning-hero {
+        padding: 100px 0 60px;
+      }
+
+      .learning-hero h1 {
+        font-size: 36px;
+      }
+
+      .section-title {
+        font-size: 32px;
+      }
+
+      .courses-grid,
+      .resources-grid,
+      .projects-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .learning-hero h1 {
+        font-size: 32px;
+      }
+
+      .learning-hero p {
+        font-size: 16px;
+      }
+
+      .path-step,
+      .course-card,
+      .resource-card,
+      .project-card {
+        padding: 20px;
+      }
+
+      .resources-tabs {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .tab-button {
+        width: 100%;
+        max-width: 250px;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Header -->
+  <header>
+    <div class="container">
+      <nav>
+        <a href="../index.html" class="logo">CodeWith<span>Nisar</span></a>
+        <ul class="nav-links">
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="learning.html" class="active">Learning</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li>
+            <div class="theme-toggle" id="themeToggle">
+              <i class="fas fa-moon"></i>Theme
+            </div>
+          </li>
+        </ul>
+        <div class="mobile-menu">
+          <i class="fas fa-bars"></i>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="learning-hero">
+    <div class="container">
+      <h1>Start Your Coding Journey</h1>
+      <p>
+        Learn HTML, CSS, and JavaScript with step-by-step tutorials, hands-on
+        projects, and expert guidance in simple Hindi/Urdu.
+      </p>
+    </div>
+  </section>
+
+  <!-- Learning Path Section -->
+  <section class="learning-path">
+    <div class="container">
+      <h2 class="section-title">Your Learning Path</h2>
+      <p>
+        Follow this structured path to go from beginner to confident web
+        developer
+      </p>
+
+      <div class="path-steps">
+        <div class="path-step">
+          <div class="step-number">Foundation</div>
+          <h3>HTML Basics</h3>
+          <p>
+            Start with the building blocks of web development. Learn to
+            structure web pages with HTML.
+          </p>
+          <ul class="step-features">
+            <li>
+              <i class="fas fa-check"></i> Tags, elements, and attributes
+            </li>
+            <li><i class="fas fa-check"></i> Semantic HTML5</li>
+            <li><i class="fas fa-check"></i> Forms and inputs</li>
+            <li><i class="fas fa-check"></i> Accessibility basics</li>
+          </ul>
+        </div>
+
+        <div class="path-step">
+          <div class="step-number">Styling</div>
+          <h3>CSS Mastery</h3>
+          <p>
+            Make your websites beautiful and responsive with modern CSS
+            techniques.
+          </p>
+          <ul class="step-features">
+            <li><i class="fas fa-check"></i> Selectors and box model</li>
+            <li><i class="fas fa-check"></i> Flexbox and Grid layout</li>
+            <li><i class="fas fa-check"></i> Responsive design</li>
+            <li><i class="fas fa-check"></i> CSS animations</li>
+          </ul>
+        </div>
+
+        <div class="path-step">
+          <div class="step-number">Interactivity</div>
+          <h3>JavaScript Power</h3>
+          <p>
+            Add dynamic functionality and create interactive web experiences.
+          </p>
+          <ul class="step-features">
+            <li><i class="fas fa-check"></i> Variables and data types</li>
+            <li><i class="fas fa-check"></i> DOM manipulation</li>
+            <li><i class="fas fa-check"></i> Event handling</li>
+            <li><i class="fas fa-check"></i> API integration</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Courses Section -->
+  <section class="courses-section">
+    <div class="container">
+      <h2 class="section-title">Featured Courses</h2>
+      <p>Comprehensive courses designed for absolute beginners</p>
+
+      <div class="courses-grid">
+        <div class="course-card">
+          <div class="course-header">
+            <div class="course-icon">
+              <i class="fab fa-html5"></i>
+            </div>
+            <h3>HTML Mastery</h3>
+            <div class="course-level">Beginner</div>
+          </div>
+          <div class="course-content">
+            <p>Learn to structure web pages with semantic HTML5.</p>
+            <ul class="course-features">
+              <li><i class="fas fa-play-circle"></i> 25 video lessons</li>
+              <li><i class="fas fa-file-code"></i> 15 practical exercises</li>
+              <li><i class="fas fa-project-diagram"></i> 5 real projects</li>
+              <li><i class="fas fa-infinity"></i> Lifetime access</li>
+            </ul>
+            <div class="course-duration">
+              <span><i class="far fa-clock"></i> 8 hours</span>
+              <span><i class="fas fa-signal"></i> Beginner</span>
+            </div>
+            <a href="#" class="cta-button">Start Learning</a>
+          </div>
+        </div>
+
+        <div class="course-card">
+          <div class="course-header">
+            <div class="course-icon">
+              <i class="fab fa-css3-alt"></i>
+            </div>
+            <h3>CSS Fundamentals</h3>
+            <div class="course-level">Beginner</div>
+          </div>
+          <div class="course-content">
+            <p>Style beautiful, responsive websites with modern CSS.</p>
+            <ul class="course-features">
+              <li><i class="fas fa-play-circle"></i> 30 video lessons</li>
+              <li><i class="fas fa-file-code"></i> 20 practical exercises</li>
+              <li><i class="fas fa-project-diagram"></i> 7 real projects</li>
+              <li><i class="fas fa-infinity"></i> Lifetime access</li>
+            </ul>
+            <div class="course-duration">
+              <span><i class="far fa-clock"></i> 10 hours</span>
+              <span><i class="fas fa-signal"></i> Beginner</span>
+            </div>
+            <a href="#" class="cta-button">Start Learning</a>
+          </div>
+        </div>
+
+        <div class="course-card">
+          <div class="course-header">
+            <div class="course-icon">
+              <i class="fab fa-js-square"></i>
+            </div>
+            <h3>JavaScript Basics</h3>
+            <div class="course-level">Beginner</div>
+          </div>
+          <div class="course-content">
+            <p>Add interactivity to your websites with JavaScript.</p>
+            <ul class="course-features">
+              <li><i class="fas fa-play-circle"></i> 35 video lessons</li>
+              <li><i class="fas fa-file-code"></i> 25 practical exercises</li>
+              <li><i class="fas fa-project-diagram"></i> 8 real projects</li>
+              <li><i class="fas fa-infinity"></i> Lifetime access</li>
+            </ul>
+            <div class="course-duration">
+              <span><i class="far fa-clock"></i> 12 hours</span>
+              <span><i class="fas fa-signal"></i> Beginner</span>
+            </div>
+            <a href="#" class="cta-button">Start Learning</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Resources Section -->
+  <section class="resources-section">
+    <div class="container">
+      <h2 class="section-title">Learning Resources</h2>
+      <p>Additional materials to support your learning journey</p>
+
+      <div class="resources-tabs">
+        <button class="tab-button active" data-tab="html">
+          HTML Resources
+        </button>
+        <button class="tab-button" data-tab="css">CSS Resources</button>
+        <button class="tab-button" data-tab="js">JavaScript Resources</button>
+        <button class="tab-button" data-tab="projects">Project Ideas</button>
+      </div>
+
+      <div class="tab-content active" id="html-tab">
+        <div class="resources-grid">
+          <div class="resource-card">
+            <div class="resource-icon">
+              <i class="fas fa-file-code"></i>
+            </div>
+            <h3>HTML Cheat Sheet</h3>
+            <p>Quick reference for all HTML tags and attributes.</p>
+            <a href="/assets/CheatSheet/Html Complete Cheat Sheet.pdf" class="resource-link" target="_blank">Download
+              PDF <i class="fas fa-arrow-right"></i></a>
+          </div>
+
+          <div class="resource-card">
+            <div class="resource-icon">
+              <i class="fas fa-video"></i>
+            </div>
+            <h3>Video Tutorials</h3>
+            <p>Step-by-step HTML tutorials in Hindi/Urdu.</p>
+            <a href="#" class="resource-link">Watch Now <i class="fas fa-arrow-right"></i></a>
+          </div>
+
+          <div class="resource-card">
+            <div class="resource-icon">
+              <i class="fas fa-laptop-code"></i>
+            </div>
+            <h3>Practice Exercises</h3>
+            <p>Hands-on coding challenges to test your skills.</p>
+            <a href="#" class="resource-link">Start Practicing <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="tab-content" id="css-tab">
+        <div class="resources-grid">
+          <div class="resource-card">
+            <div class="resource-icon">
+              <i class="fas fa-file-code"></i>
+            </div>
+            <h3>CSS Cheat Sheet</h3>
+            <p>Complete guide to mastering CSS.</p>
+            <a href="/assets/CheatSheet/Css Complete Cheat Sheet.pdf" class="resource-link" target="_blank">Download PDF
+              <i class="fas fa-arrow-right"></i></a>
+          </div>
+
+          <div class="resource-card">
+            <div class="resource-icon">
+              <i class="fas fa-palette"></i>
+            </div>
+            <h3>CSS Flexbox Guide</h3>
+            <p>Complete guide to mastering CSS Flexbox layout.</p>
+            <a href="../assets/resources/CSS Flexbox Complete.html" class="resource-link" target="_blank">Learn Flexbox
+              <i class="fas fa-arrow-right"></i></a>
+          </div>
+
+          <div class="resource-card">
+            <div class="resource-icon">
+              <i class="fas fa-th"></i>
+            </div>
+            <h3>CSS Grid Tutorial</h3>
+            <p>Learn two-dimensional layout with CSS Grid.</p>
+            <a href="../assets/resources/CSS Grid Complete.html" target="_blank" class="resource-link">Explore Grid <i
+                class="fas fa-arrow-right"></i></a>
+          </div>
+
+          <div class="resource-card">
+            <div class="resource-icon">
+              <i class="fas fa-mobile-alt"></i>
+            </div>
+            <h3>Responsive Design</h3>
+            <p>Make your websites work on all devices.</p>
+            <a href="../assets/resources/CSS Responsive Design.html" target="_blank" class="resource-link">Get
+              Responsive <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="tab-content" id="js-tab">
+        <div class="resources-grid">
+          <div class="resource-card">
+            <div class="resource-icon">
+              <i class="fas fa-code"></i>
+            </div>
+            <h3>JavaScript Basics</h3>
+            <p>Fundamental concepts and syntax explained simply.</p>
+            <a href="#" class="resource-link">Learn Basics <i class="fas fa-arrow-right"></i></a>
+          </div>
+
+          <div class="resource-card">
+            <div class="resource-icon">
+              <i class="fas fa-cube"></i>
+            </div>
+            <h3>DOM Manipulation</h3>
+            <p>How to interact with webpage elements using JS.</p>
+            <a href="#" class="resource-link">Master DOM <i class="fas fa-arrow-right"></i></a>
+          </div>
+
+          <div class="resource-card">
+            <div class="resource-icon">
+              <i class="fas fa-bolt"></i>
+            </div>
+            <h3>JavaScript Projects</h3>
+            <p>Build interactive applications with JavaScript.</p>
+            <a href="#" class="resource-link">Start Building <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="tab-content" id="projects-tab">
+        <div class="resources-grid">
+          <div class="resource-card">
+            <div class="resource-icon">
+              <i class="fas fa-tasks"></i>
+            </div>
+            <h3>Beginner Projects</h3>
+            <p>Simple projects to practice your basic skills.</p>
+            <a href="#" class="resource-link">View Projects <i class="fas fa-arrow-right"></i></a>
+          </div>
+
+          <div class="resource-card">
+            <div class="resource-icon">
+              <i class="fas fa-rocket"></i>
+            </div>
+            <h3>Intermediate Projects</h3>
+            <p>Challenge yourself with more complex applications.</p>
+            <a href="#" class="resource-link">Take Challenge <i class="fas fa-arrow-right"></i></a>
+          </div>
+
+          <div class="resource-card">
+            <div class="resource-icon">
+              <i class="fas fa-gem"></i>
+            </div>
+            <h3>Portfolio Projects</h3>
+            <p>Build impressive projects for your portfolio.</p>
+            <a href="#" class="resource-link">Build Portfolio <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects Section -->
+  <section class="projects-section">
+    <div class="container">
+      <h2 class="section-title">Practice Projects</h2>
+      <p>Apply what you learn by building real-world projects</p>
+
+      <div class="projects-grid">
+        <div class="project-card">
+          <div class="project-image">
+            <i class="fas fa-address-card"></i>
+          </div>
+          <div class="project-content">
+            <h3>Personal Portfolio</h3>
+            <p>
+              Create your own portfolio website to showcase your skills and
+              projects.
+            </p>
+            <div class="project-tags">
+              <span class="project-tag">HTML</span>
+              <span class="project-tag">CSS</span>
+            </div>
+            <a href="#" class="cta-button btn-outline">View Project</a>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="project-image">
+            <i class="fas fa-shopping-cart"></i>
+          </div>
+          <div class="project-content">
+            <h3>E-commerce Product Page</h3>
+            <p>
+              Design a product page with image gallery and shopping cart
+              functionality.
+            </p>
+            <div class="project-tags">
+              <span class="project-tag">HTML</span>
+              <span class="project-tag">CSS</span>
+              <span class="project-tag">JavaScript</span>
+            </div>
+            <a href="#" class="cta-button btn-outline">View Project</a>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="project-image">
+            <i class="fas fa-cloud-sun"></i>
+          </div>
+          <div class="project-content">
+            <h3>Weather App</h3>
+            <p>
+              Build a weather application that fetches data from an API and
+              displays it beautifully.
+            </p>
+            <div class="project-tags">
+              <span class="project-tag">JavaScript</span>
+              <span class="project-tag">API</span>
+            </div>
+            <a href="#" class="cta-button btn-outline">View Project</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <p>&copy; 2025 CodeWithNisar. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="/js/theme.js"></script>
+  <script>
+    const menu = document.querySelector(".mobile-menu");
+    const navLinks = document.querySelector(".nav-links");
+
+    menu.addEventListener("click", () => {
+      navLinks.classList.toggle("active");
+      menu.querySelector("i").classList.toggle("fa-times");
+      menu.querySelector("i").classList.toggle("fa-bars");
+    });
+
+    // Add active class to current page link
+    document.querySelectorAll(".nav-links a").forEach((link) => {
+      if (link.href === window.location.href) {
+        link.classList.add("active");
+      }
+    });
+
+    // Tab functionality
+    document.querySelectorAll(".tab-button").forEach((button) => {
+      button.addEventListener("click", () => {
+        // Remove active class from all buttons and contents
+        document.querySelectorAll(".tab-button").forEach((btn) => {
+          btn.classList.remove("active");
+        });
+        document.querySelectorAll(".tab-content").forEach((content) => {
+          content.classList.remove("active");
+        });
+
+        // Add active class to clicked button and corresponding content
+        button.classList.add("active");
+        const tabId = button.getAttribute("data-tab");
+        document.getElementById(`${tabId}-tab`).classList.add("active");
+      });
+    });
+  </script>
+</body>
+
+</html>
